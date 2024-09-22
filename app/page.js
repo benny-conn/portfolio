@@ -1,7 +1,26 @@
-import AudioPlayer from "@/components/AudioPlayer"
+import AudioPlayer, { FixedAudioPlayer } from "@/components/AudioPlayer"
 import { Button } from "@/components/ui/button"
-import { MapPin, Volume2 } from "lucide-react"
+import { MapPin } from "lucide-react"
 import Image from "next/image"
+import Work from "./Work"
+import Contact from "./Contact"
+import ContactButton from "./ContactButton"
+import MyWorkButton from "./MyWorkButton"
+
+const playlist = [
+  {
+    src: "/audio/original-big-band.m4a",
+    name: "Track 1",
+    description: "Description 1",
+    audioId: "1",
+  },
+  {
+    src: "/audio/original-big-band.m4a",
+    name: "Track 1",
+    description: "Description 1",
+    audioId: "2",
+  },
+]
 
 export default function Home() {
   return (
@@ -10,9 +29,7 @@ export default function Home() {
         <div className="relative w-64 h-24">
           <Image src="/logo.png" alt="logo" fill className="object-cover" />
         </div>
-        <Button size="lg" className="rounded-full font-serif">
-          Get in touch
-        </Button>
+        <ContactButton />
       </div>
       <div className="flex flex-col gap-12">
         <div className="flex flex-row gap-8 h-[600px]">
@@ -36,28 +53,14 @@ export default function Home() {
                 Programmer and Jazz Trombonist, specializing in full stack app
                 development and bebop trombone.{" "}
                 {/* <Volume2 className="inline-block w-7 h-7 text-brand ml-1" /> */}
-                <AudioPlayer
-                  audioId="1"
-                  src="/original-big-band.m4a"
-                  name={"Test"}
-                  image="/happy.jpeg"
-                />
+                <AudioPlayer playlist={playlist} />
                 <span className="text-brand text-xs ml-4">
                   (Click to listen)
                 </span>
               </h4>
               <div className="flex flex-row gap-4 items-center justify-start pt-4">
-                <Button
-                  size="lg"
-                  variant="secondary"
-                  className="h-12 rounded-full text-xl font-serif px-12">
-                  My Work
-                </Button>
-                <Button
-                  size="lg"
-                  className="h-12 rounded-full text-xl font-serif px-12">
-                  Get in touch
-                </Button>
+                <MyWorkButton className="h-12 rounded-full text-xl font-serif px-12" />
+                <ContactButton className="h-12 rounded-full text-xl font-serif px-12" />
               </div>
             </div>
             <div className="flex flex-col gap-2">
@@ -80,7 +83,10 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <Work />
+        <Contact />
       </div>
+      <FixedAudioPlayer />
     </main>
   )
 }
