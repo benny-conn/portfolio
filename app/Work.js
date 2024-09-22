@@ -1,4 +1,5 @@
 import FeatureCard from "@/components/FeatureCard"
+import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import {
   Bell,
@@ -10,12 +11,12 @@ import {
   ImageIcon,
   MapPin,
   Megaphone,
-  Menu,
   Settings,
   Users2,
   Waypoints,
 } from "lucide-react"
 import Image from "next/image"
+import ContactButton from "./ContactButton"
 
 export default function Work() {
   return (
@@ -164,6 +165,19 @@ const Gig = () => {
           />
         </div>
       </div>
+      <div className="flex flex-row items-center gap-4">
+        <ContactButton
+          variant="secondary"
+          className="h-12 rounded-full text-xl font-serif px-12"
+        />
+        <Button
+          className="px-12 rounded-full h-12 font-serif text-xl"
+          size="lg">
+          <a href="https://gig.app" target="_blank">
+            Download The App
+          </a>
+        </Button>
+      </div>
     </div>
   )
 }
@@ -266,6 +280,19 @@ const Gallery = () => {
             alt="gallery home screen"
           />
         </div>
+      </div>
+      <div className="flex flex-row items-center justify-end gap-4">
+        <ContactButton
+          variant="secondary"
+          className="h-12 rounded-full text-xl font-serif px-12"
+        />
+        <Button
+          className="px-12 rounded-full h-12 font-serif text-xl"
+          size="lg">
+          <a href="https://github.com/gallery-so/go-gallery" target="_blank">
+            See the Open Source Repo
+          </a>
+        </Button>
       </div>
     </div>
   )

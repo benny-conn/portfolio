@@ -26,11 +26,19 @@ export default function Contact() {
 
   return (
     <section
-      className="w-full py-12 md:py-24 lg:py-32 items-center justify-center flex"
+      className="w-full py-12 md:py-24 lg:py-32 items-center justify-center flex gap-12"
       id="contact">
-      <div className="container px-4 md:px-6">
+      <div className="relative h-[500px] w-96 rounded-lg overflow-hidden">
+        <Image
+          src="/cool.jpg"
+          alt="benny looking cool"
+          fill
+          className="object-cover"
+        />
+      </div>
+      <div className="px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4">
-          <div className="space-y-2 text-center">
+          <div className="space-y-2">
             <h2 className="font-serif text-4xl md:text-6xl text-brand">
               Summon my services!
             </h2>
@@ -90,14 +98,6 @@ export default function Contact() {
             </form>
           </div>
         </div>
-      </div>
-      <div className="relative h-[500px] w-96 rounded-lg overflow-hidden">
-        <Image
-          src="/cool.jpg"
-          alt="benny looking cool"
-          fill
-          className="object-cover"
-        />
       </div>
     </section>
   )

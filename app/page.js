@@ -6,6 +6,7 @@ import Work from "./Work"
 import Contact from "./Contact"
 import ContactButton from "./ContactButton"
 import MyWorkButton from "./MyWorkButton"
+import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons"
 
 const playlist = [
   {
@@ -35,7 +36,17 @@ export default function Home() {
             priority
           />
         </div>
-        <ContactButton />
+        <div className="flex flex-row gap-4 items-center">
+          <a href="https://github.com/benny-conn" target="_blank">
+            <GitHubLogoIcon className="w-6 h-6" />
+          </a>
+          <a href="https://www.linkedin.com/in/benny-conn/" target="_blank">
+            <LinkedInLogoIcon className="w-6 h-6" />
+          </a>
+          <a href="https://github.com/benny-conn" target="_blank">
+            <ContactButton />
+          </a>
+        </div>
       </div>
       <div className="flex flex-col gap-12">
         <div className="flex flex-row gap-8 h-[600px]">
