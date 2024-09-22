@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/hooks/use-toast"
+import Image from "next/image"
 
 export default function Contact() {
   const [name, setName] = useState("")
@@ -89,6 +90,14 @@ export default function Contact() {
             </form>
           </div>
         </div>
+      </div>
+      <div className="relative h-[500px] w-96 rounded-lg overflow-hidden">
+        <Image
+          src="/cool.jpg"
+          alt="benny looking cool"
+          fill
+          className="object-cover"
+        />
       </div>
     </section>
   )

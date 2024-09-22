@@ -27,7 +27,13 @@ export default function Home() {
     <main className="p-8 pb-20 flex flex-col gap-12 relative">
       <div className="flex flex-row items-center justify-between">
         <div className="relative w-64 h-24">
-          <Image src="/logo.png" alt="logo" fill className="object-cover" />
+          <Image
+            src="/logo.png"
+            alt="logo"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
         <ContactButton />
       </div>
@@ -36,9 +42,10 @@ export default function Home() {
           <div className="flex items-center justify-center">
             <div className="relative h-full w-[440px] rounded-lg overflow-hidden">
               <Image
-                src="/happy.jpeg"
+                src="/happy.jpg"
                 alt="benny looking happy"
                 fill
+                priority
                 className="object-cover"
               />
             </div>
@@ -77,6 +84,7 @@ export default function Home() {
                   src="/trombone-4.jpg"
                   alt="benny playing trombone"
                   fill
+                  priority
                   className="object-cover"
                 />
               </div>
