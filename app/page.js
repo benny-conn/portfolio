@@ -1,5 +1,4 @@
 import AudioPlayer, { FixedAudioPlayer } from "@/components/AudioPlayer"
-import { Button } from "@/components/ui/button"
 import { MapPin } from "lucide-react"
 import Image from "next/image"
 import Work from "./Work"
@@ -25,9 +24,9 @@ const playlist = [
 
 export default function Home() {
   return (
-    <main className="p-8 pb-20 flex flex-col gap-12 relative">
-      <div className="flex flex-row items-center justify-between">
-        <div className="relative w-64 h-24">
+    <main className="p-4 sm:p-8 pb-20 flex flex-col gap-8 sm:gap-12 relative">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
+        <div className="relative w-48 h-24 md:w-64 md:h-24">
           <Image
             src="/logo.png"
             alt="logo"
@@ -48,10 +47,10 @@ export default function Home() {
           </a>
         </div>
       </div>
-      <div className="flex flex-col gap-12">
-        <div className="flex flex-row gap-8 h-[600px]">
+      <div className="flex flex-col gap-8 sm:gap-12">
+        <div className="flex flex-col sm:flex-row gap-8 sm:h-[600px]">
           <div className="flex items-center justify-center">
-            <div className="relative h-full w-[440px] rounded-lg overflow-hidden">
+            <div className="relative h-[300px] sm:h-full w-full sm:w-[440px] rounded-lg overflow-hidden">
               <Image
                 src="/happy.jpg"
                 alt="benny looking happy"
@@ -62,23 +61,22 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4 h-full justify-between">
+          <div className="flex flex-col gap-4 sm:h-full justify-between">
             <div className="flex flex-col gap-2">
-              <h1 className="text-8xl font-serif">
+              <h1 className="text-5xl sm:text-8xl font-serif">
                 Hi, I&apos;m <span className="text-brand">Benny!</span>
               </h1>
-              <h4 className="text-4xl font-sans">
+              <h4 className="text-2xl sm:text-4xl font-sans">
                 Programmer and Jazz Trombonist, specializing in full stack app
                 development and bebop trombone.{" "}
-                {/* <Volume2 className="inline-block w-7 h-7 text-brand ml-1" /> */}
                 <AudioPlayer playlist={playlist} />
                 <span className="text-brand text-xs ml-4">
                   (Click to listen)
                 </span>
               </h4>
-              <div className="flex flex-row gap-4 items-center justify-start pt-4">
-                <MyWorkButton className="h-12 rounded-full text-xl font-serif px-12" />
-                <ContactButton className="h-12 rounded-full text-xl font-serif px-12" />
+              <div className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-4">
+                <MyWorkButton className="w-full sm:w-auto h-12 rounded-full text-xl font-serif px-12" />
+                <ContactButton className="w-full sm:w-auto h-12 rounded-full text-xl font-serif px-12" />
               </div>
             </div>
             <div className="flex flex-col gap-2">
@@ -90,7 +88,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="w-full h-80 rounded-lg overflow-hidden relative">
+              <div className="w-full h-60 sm:h-80 rounded-lg overflow-hidden relative">
                 <Image
                   src="/trombone-4.jpg"
                   alt="benny playing trombone"

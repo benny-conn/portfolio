@@ -21,7 +21,7 @@ import ContactButton from "./ContactButton"
 export default function Work() {
   return (
     <div className="flex flex-col gap-4" id="work">
-      <h2 className="text-8xl font-serif ">My work</h2>
+      <h2 className="text-6xl sm:text-8xl font-serif ">My work</h2>
       <Separator className="w-full my-8" />
       <div className="flex flex-col gap-32">
         <Gig />
@@ -36,7 +36,7 @@ const Gig = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-1">
-        <div className="flex flex-row gap-4 items-center">
+        <div className="flex flex-col md:flex-row gap-4 items-center">
           <div className="relative h-32 w-64">
             <Image
               src="/gig-secondary.png"
@@ -45,7 +45,7 @@ const Gig = () => {
               className="object-contain"
             />
           </div>
-          <div className="flex flex-row gap-1 items-center">
+          <div className="flex flex-row gap-1 items-center flex-wrap">
             <div className="h-8 w-8 relative border border-border rounded-sm bg-neutral-800">
               <Image
                 src="/expo.png"
@@ -132,7 +132,7 @@ const Gig = () => {
         </p>
       </div>
 
-      <div className="flex flex-row items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex flex-col gap-4 w-full">
           <FeatureCard
             icon={MapPin}
@@ -165,7 +165,7 @@ const Gig = () => {
           />
         </div>
       </div>
-      <div className="flex flex-row items-center gap-4">
+      <div className="flex flex-col md:flex-row items-center gap-4">
         <ContactButton
           variant="secondary"
           className="h-12 rounded-full text-xl font-serif px-12"
@@ -185,8 +185,8 @@ const Gig = () => {
 const Gallery = () => {
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-1 items-end">
-        <div className="flex flex-row-reverse gap-4 items-center justify-end">
+      <div className="flex flex-col gap-1 md:items-end">
+        <div className="flex flex-col md:flex-row-reverse gap-4 items-center md:justify-end">
           <div className="relative h-32 w-64">
             <Image
               src="/gallery.svg"
@@ -238,7 +238,7 @@ const Gallery = () => {
             </div>
           </div>
         </div>
-        <p className="text-xl max-w-prose text-right">
+        <p className="text-xl max-w-prose md:text-right">
           <span className="font-serif hover:underline text-brand">
             <a href="https://gallery.so" target="_blank">
               Gallery
@@ -248,7 +248,7 @@ const Gallery = () => {
         </p>
       </div>
 
-      <div className="flex flex-row-reverse items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-4">
         <div className="flex flex-col gap-4 w-full">
           <FeatureCard
             icon={ImageIcon}
@@ -272,7 +272,7 @@ const Gallery = () => {
             description="Wrote an incremental update pattern for syncing third party data for users of the application. This allowed the user to interact with the site while the syncing was happening in the background."
           />
         </div>
-        <div className="w-full relative h-[600px] rounded-lg overflow-hidden m-16">
+        <div className="w-full relative md:h-[600px] h-[300px] rounded-lg overflow-hidden my-8 md:m-16">
           <Image
             src="/gallery-home.png"
             fill
@@ -281,7 +281,7 @@ const Gallery = () => {
           />
         </div>
       </div>
-      <div className="flex flex-row items-center justify-end gap-4">
+      <div className="flex flex-col md:flex-row items-center md:justify-end gap-4">
         <ContactButton
           variant="secondary"
           className="h-12 rounded-full text-xl font-serif px-12"
@@ -302,7 +302,7 @@ const Minecraft = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-1">
-        <div className="flex flex-row gap-4 items-center">
+        <div className="flex flex-col md:flex-row gap-4 items-center">
           <div className="relative h-32 w-64">
             <Image
               src="/minecraft.svg"
@@ -345,7 +345,7 @@ const Minecraft = () => {
         </p>
       </div>
 
-      <div className="flex flex-row items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex flex-col gap-4 w-full">
           <FeatureCard
             icon={Grid}
@@ -369,7 +369,7 @@ const Minecraft = () => {
             description="A plugin that allows players to initiate safe trades with each other."
           />
         </div>
-        <div className="w-full relative h-[600px] rounded-lg overflow-hidden m-16">
+        <div className="w-full relative md:h-[600px] h-[300px] rounded-lg overflow-hidden my-8 md:m-16">
           <Image
             src="/plugin.png"
             fill
