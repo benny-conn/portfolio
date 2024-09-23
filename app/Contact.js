@@ -9,7 +9,7 @@ import Image from "next/image"
 export default function Contact() {
   return (
     <section
-      className="w-full py-12 md:py-24 lg:py-32 items-center justify-center flex gap-12"
+      className="w-full py-12 md:py-24 lg:py-32 items-center justify-center flex md:flex-row flex-col-reverse gap-12"
       id="contact">
       <div className="relative h-[500px] w-96 rounded-lg overflow-hidden">
         <Image
