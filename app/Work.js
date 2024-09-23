@@ -17,6 +17,7 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import ContactButton from "./ContactButton"
+import { GitHubLogoIcon } from "@radix-ui/react-icons"
 
 export default function Work() {
   return (
@@ -289,8 +290,11 @@ const Gallery = () => {
         <Button
           className="px-12 rounded-full h-12 font-serif text-xl"
           size="lg">
-          <a href="https://github.com/gallery-so/go-gallery" target="_blank">
-            See the Open Source Repo
+          <a
+            href="https://github.com/gallery-so/go-gallery"
+            target="_blank"
+            className="flex items-center gap-2">
+            <GitHubLogoIcon className="w-6 h-6" /> See the Open Source Repo
           </a>
         </Button>
       </div>
@@ -351,22 +355,26 @@ const Minecraft = () => {
             icon={Grid}
             title="Towny Menu"
             description="My most popular plugin adds a visual administration menu to another popular plugin, Towny, that allows users to easily manage their towns and plots without needing to type commands."
+            link="https://github.com/benny-conn/TownyMenu"
           />
           <FeatureCard
             icon={Crown}
             title="Civilizations"
             description="My most complex and feature rich plugin is a multiplayer land claiming and politics system. It allows players to claim land, build cities, and declare war on other players with real economic impact on the server."
+            link="https://github.com/benny-conn/Civilizations"
           />
 
           <FeatureCard
             icon={Briefcase}
             title="Bundle"
             description="A package manager for Minecraft plugins that allows users to easily install and update plugins from a central repository. The traditional way of installing plugins was to download tens of zip filse and copy them into the plugins folder."
+            link="https://github.com/benny-conn/bundle"
           />
           <FeatureCard
             icon={HandCoins}
             title="Trader"
             description="A plugin that allows players to initiate safe trades with each other."
+            link="https://github.com/benny-conn/Trader"
           />
         </div>
         <div className="w-full relative md:h-[600px] h-[300px] rounded-lg overflow-hidden my-8 md:m-16">

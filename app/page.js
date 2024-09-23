@@ -9,16 +9,29 @@ import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons"
 
 const playlist = [
   {
-    src: "/audio/original-big-band.m4a",
-    name: "Track 1",
-    description: "Description 1",
-    audioId: "1",
+    src: "/audio/blues.wav",
+    name: "Blues to Be There - Duke Ellington",
+    description: "The Benny Conn Big Band",
+  },
+  {
+    src: "/audio/quietude.wav",
+    name: "Quietude - Thad Jones",
+    description: "The Benny Conn Big Band",
+  },
+  {
+    src: "/audio/queen.wav",
+    name: "Queen Bee - Count Basie",
+    description: "The Benny Conn Big Band",
+  },
+  {
+    src: "/audio/solo.wav",
+    name: "Short Trombone Solo",
+    description: "Benny Conn",
   },
   {
     src: "/audio/original-big-band.m4a",
-    name: "Track 1",
-    description: "Description 1",
-    audioId: "2",
+    name: "Everything After",
+    description: "Big Band Original Section",
   },
 ]
 
@@ -67,8 +80,8 @@ export default function Home() {
                 Hi, I&apos;m <span className="text-brand">Benny!</span>
               </h1>
               <h4 className="text-2xl sm:text-4xl font-sans">
-                Programmer and Jazz Trombonist, specializing in full stack app
-                development and bebop trombone.{" "}
+                Programmer and Jazz Trombonist, specializing in full stack
+                app/web development and bebop trombone.{" "}
                 <AudioPlayer playlist={playlist} />
                 <span className="text-brand text-xs ml-4">
                   (Click to listen)
@@ -84,7 +97,7 @@ export default function Home() {
                 <div className="flex flex-row gap-2 items-center justify-center">
                   <MapPin className="w-4 h-4 text-muted-foreground" />
                   <p className="text-base text-muted-foreground">
-                    Paris, France
+                    New York, NY
                   </p>
                 </div>
               </div>

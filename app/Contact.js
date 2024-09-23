@@ -7,23 +7,6 @@ import { toast } from "@/hooks/use-toast"
 import Image from "next/image"
 
 export default function Contact() {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
-
-  const handleSubmit = e => {
-    e.preventDefault()
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", { name, email, message })
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    })
-    setName("")
-    setEmail("")
-    setMessage("")
-  }
-
   return (
     <section
       className="w-full py-12 md:py-24 lg:py-32 items-center justify-center flex gap-12"
@@ -48,7 +31,10 @@ export default function Contact() {
             </p>
           </div>
           <div className="w-full max-w-screen-md space-y-4">
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              action="https://formspree.io/f/mrbzwrzv"
+              method="POST"
+              className="space-y-4">
               <div className="space-y-2">
                 <label
                   htmlFor="name"
@@ -59,8 +45,7 @@ export default function Contact() {
                   id="name"
                   placeholder="Enter your name"
                   required
-                  value={name}
-                  onChange={e => setName(e.target.value)}
+                  name="name"
                 />
               </div>
               <div className="space-y-2">
@@ -74,8 +59,7 @@ export default function Contact() {
                   placeholder="Enter your email"
                   required
                   type="email"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  name="email"
                 />
               </div>
               <div className="space-y-2">
@@ -88,8 +72,7 @@ export default function Contact() {
                   id="message"
                   placeholder="Enter your message"
                   required
-                  value={message}
-                  onChange={e => setMessage(e.target.value)}
+                  name="message"
                 />
               </div>
               <Button size="lg" type="submit">
