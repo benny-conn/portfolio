@@ -46,6 +46,7 @@ const Gig = () => {
               className="object-contain"
             />
           </div>
+
           <div className="flex flex-row gap-1 items-center flex-wrap">
             <div className="h-8 w-8 relative border border-border rounded-sm bg-neutral-800">
               <Image
@@ -121,6 +122,9 @@ const Gig = () => {
             </div>
           </div>
         </div>
+        <h3 className="text-2xl text-muted-foreground">
+          Founder and Programmer
+        </h3>
         <p className="text-xl max-w-prose">
           <span className="font-serif hover:underline text-brand">
             <a href="https://gig.app" target="_blank">
@@ -239,6 +243,7 @@ const Gallery = () => {
             </div>
           </div>
         </div>
+        <h3 className="text-2xl text-muted-foreground">BackendProgrammer</h3>
         <p className="text-xl max-w-prose md:text-right">
           <span className="font-serif hover:underline text-brand">
             <a href="https://gallery.so" target="_blank">
@@ -334,6 +339,7 @@ const Minecraft = () => {
             </div>
           </div>
         </div>
+        <h3 className="text-2xl text-muted-foreground">Programmer</h3>
         <p className="text-xl max-w-prose">
           I have developed multiple{" "}
           <span className="font-serif hover:underline text-brand">
