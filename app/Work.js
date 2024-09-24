@@ -243,7 +243,7 @@ const Gallery = () => {
             </div>
           </div>
         </div>
-        <h3 className="text-2xl text-muted-foreground">BackendProgrammer</h3>
+        <h3 className="text-2xl text-muted-foreground">Backend Programmer</h3>
         <p className="text-xl max-w-prose md:text-right">
           <span className="font-serif hover:underline text-brand">
             <a href="https://gallery.so" target="_blank">

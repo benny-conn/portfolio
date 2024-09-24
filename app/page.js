@@ -79,14 +79,14 @@ export default function Home() {
               <h1 className="text-5xl sm:text-8xl font-serif">
                 Hi, I&apos;m <span className="text-brand">Benny!</span>
               </h1>
-              <h4 className="text-2xl sm:text-4xl font-sans">
+              <h2 className="text-2xl sm:text-4xl font-sans">
                 Programmer and Jazz Trombonist, specializing in full stack
                 app/web development and bebop trombone.{" "}
                 <AudioPlayer playlist={playlist} />
                 <span className="text-brand text-xs ml-4">
                   (Click to listen)
                 </span>
-              </h4>
+              </h2>
               <div className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-4">
                 <MyWorkButton className="w-full sm:w-auto h-12 rounded-full text-xl font-serif px-12" />
                 <ContactButton className="w-full sm:w-auto h-12 rounded-full text-xl font-serif px-12" />
