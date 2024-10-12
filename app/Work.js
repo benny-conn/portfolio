@@ -37,7 +37,7 @@ const Gig = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-1">
-        <div className="flex flex-col md:flex-row gap-4 items-center">
+        <div className="flex flex-col md:flex-row gap-4">
           <div className="relative h-32 w-64">
             <Image
               src="/gig-secondary.png"
@@ -191,7 +191,7 @@ const Gallery = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-1 md:items-end">
-        <div className="flex flex-col md:flex-row-reverse gap-4 items-center md:justify-end">
+        <div className="flex flex-col md:flex-row-reverse gap-4">
           <div className="relative h-32 w-64">
             <Image
               src="/gallery.svg"
@@ -311,7 +311,7 @@ const Minecraft = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-1">
-        <div className="flex flex-col md:flex-row gap-4 items-center">
+        <div className="flex flex-col md:flex-row gap-4">
           <div className="relative h-32 w-64">
             <Image
               src="/minecraft.svg"
