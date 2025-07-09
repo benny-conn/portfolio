@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
       <body
-        className={`${haasBold.variable} ${hassRegular.variable} antialiased max-w-screen-2xl mx-auto`}>
+        className={`${haasBold.variable} ${hassRegular.variable} antialiased max-w-(--breakpoint-2xl) mx-auto`}>
         <AudioProvider>{children}</AudioProvider>
         <Toaster />
       </body>

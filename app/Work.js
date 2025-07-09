@@ -22,7 +22,7 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons"
 export default function Work() {
   return (
     <div className="flex flex-col gap-4" id="work">
-      <h2 className="text-6xl sm:text-8xl font-serif ">My work</h2>
+      <h2 className="text-6xl sm:text-8xl font-haas-bold ">My work</h2>
       <Separator className="w-full my-8" />
       <div className="flex flex-col gap-32">
         <Gig />
@@ -126,7 +126,7 @@ const Gig = () => {
           Founder and Programmer
         </h3>
         <p className="text-xl max-w-prose">
-          <span className="font-serif hover:underline text-brand">
+          <span className="font-haas-bold hover:underline text-brand">
             <a href="https://gig.app" target="_blank">
               The Gig App
             </a>
@@ -173,10 +173,10 @@ const Gig = () => {
       <div className="flex flex-col md:flex-row items-center gap-4">
         <ContactButton
           variant="secondary"
-          className="h-12 rounded-full text-xl font-serif px-12"
+          className="h-12 rounded-full text-xl font-haas-bold px-12"
         />
         <Button
-          className="px-12 rounded-full h-12 font-serif text-xl"
+          className="px-12 rounded-full h-12 font-haas-bold text-xl"
           size="lg">
           <a href="https://gig.app" target="_blank">
             Download The App
@@ -245,7 +245,7 @@ const Gallery = () => {
         </div>
         <h3 className="text-2xl text-muted-foreground">Backend Programmer</h3>
         <p className="text-xl max-w-prose md:text-right">
-          <span className="font-serif hover:underline text-brand">
+          <span className="font-haas-bold hover:underline text-brand">
             <a href="https://gallery.so" target="_blank">
               Gallery
             </a>
@@ -290,10 +290,10 @@ const Gallery = () => {
       <div className="flex flex-col md:flex-row items-center md:justify-end gap-4">
         <ContactButton
           variant="secondary"
-          className="h-12 rounded-full text-xl font-serif px-12"
+          className="h-12 rounded-full text-xl font-haas-bold px-12"
         />
         <Button
-          className="px-12 rounded-full h-12 font-serif text-xl"
+          className="px-12 rounded-full h-12 font-haas-bold text-xl"
           size="lg">
           <a
             href="https://github.com/gallery-so/go-gallery"
@@ -342,7 +342,7 @@ const Minecraft = () => {
         <h3 className="text-2xl text-muted-foreground">Programmer</h3>
         <p className="text-xl max-w-prose">
           I have developed multiple{" "}
-          <span className="font-serif hover:underline text-brand">
+          <span className="font-haas-bold hover:underline text-brand">
             <a
               href="https://github.com/benny-conn/Civilizations"
               target="_blank">

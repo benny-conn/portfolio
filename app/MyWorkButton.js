@@ -8,7 +8,7 @@ export default function MyWorkButton({ className }) {
     <Button
       size="lg"
       variant="secondary"
-      className={cn("rounded-full font-serif", className)}
+      className={cn("rounded-full font-haas-bold", className)}
       onClick={() => {
         window.location.href = "#work"
       }}>
