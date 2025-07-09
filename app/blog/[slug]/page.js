@@ -1,21 +1,22 @@
-import { notFound } from 'next/navigation'
-import Link from 'next/link'
-import { getPostBySlug, getAllPostSlugs } from '@/lib/blog'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Separator } from '@/components/ui/separator'
-import { CalendarIcon, TagIcon, ArrowLeft } from 'lucide-react'
+import { notFound } from "next/navigation"
+import Link from "next/link"
+import { getPostBySlug, getAllPostSlugs } from "@/lib/blog"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { CalendarIcon, TagIcon, ArrowLeft } from "lucide-react"
 
 export async function generateStaticParams() {
   const posts = getAllPostSlugs()
-  return posts.map((post) => ({
+  return posts.map(post => ({
     slug: post.slug,
   }))
 }
 
 export default async function BlogPost({ params }) {
-  const post = await getPostBySlug(params.slug)
-  
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
+
   if (!post) {
     notFound()
   }
@@ -29,30 +30,30 @@ export default async function BlogPost({ params }) {
             Back to Blog
           </Link>
         </Button>
-        
+
         <div className="flex flex-col gap-4">
           <h1 className="text-4xl sm:text-6xl font-serif leading-tight">
             {post.title}
           </h1>
-          
+
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
               <CalendarIcon className="w-4 h-4" />
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
+              {new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
               })}
             </div>
             {post.tags && post.tags.length > 0 && (
               <div className="flex items-center gap-1">
                 <TagIcon className="w-4 h-4" />
-                {post.tags.join(', ')}
+                {post.tags.join(", ")}
               </div>
             )}
           </div>
         </div>
-        
+
         <Separator className="w-full my-4" />
       </div>
 
@@ -60,7 +61,7 @@ export default async function BlogPost({ params }) {
         <article className="lg:col-span-3">
           <Card>
             <CardContent className="p-6 sm:p-8">
-              <div 
+              <div
                 className="prose prose-lg prose-neutral dark:prose-invert max-w-none
                   prose-headings:font-serif prose-headings:text-foreground
                   prose-h1:text-4xl prose-h1:font-bold prose-h1:mb-6 prose-h1:mt-8
@@ -100,9 +101,7 @@ export default async function BlogPost({ params }) {
 
       <div className="flex justify-center mt-8">
         <Button variant="outline" asChild>
-          <Link href="/blog">
-            ← Back to Blog
-          </Link>
+          <Link href="/blog">← Back to Blog</Link>
         </Button>
       </div>
     </main>
@@ -111,7 +110,7 @@ export default async function BlogPost({ params }) {
 
 function TableOfContents({ content }) {
   const headings = extractHeadings(content)
-  
+
   if (headings.length === 0) {
     return null
   }
@@ -119,7 +118,9 @@ function TableOfContents({ content }) {
   return (
     <Card>
       <CardContent className="p-4">
-        <h3 className="font-serif text-lg font-semibold mb-4">Table of Contents</h3>
+        <h3 className="font-serif text-lg font-semibold mb-4">
+          Table of Contents
+        </h3>
         <nav>
           <ul className="space-y-2">
             {headings.map((heading, index) => {
@@ -128,8 +129,7 @@ function TableOfContents({ content }) {
                 <li key={index} style={{ marginLeft: `${marginLeft}px` }}>
                   <a
                     href={`#${heading.id}`}
-                    className="text-sm text-muted-foreground hover:text-brand transition-colors block py-1"
-                  >
+                    className="text-sm text-muted-foreground hover:text-brand transition-colors block py-1">
                     {heading.text}
                   </a>
                 </li>
@@ -146,18 +146,18 @@ function extractHeadings(html) {
   const headings = []
   const headingRegex = /<h([1-6])[^>]*id="([^"]*)"[^>]*>(.*?)<\/h[1-6]>/g
   let match
-  
+
   while ((match = headingRegex.exec(html)) !== null) {
     const level = parseInt(match[1])
     const id = match[2]
-    const text = match[3].replace(/<[^>]*>/g, '') // Remove HTML tags
-    
+    const text = match[3].replace(/<[^>]*>/g, "") // Remove HTML tags
+
     headings.push({
       level,
       id,
-      text
+      text,
     })
   }
-  
+
   return headings
 }
