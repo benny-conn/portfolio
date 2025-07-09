@@ -78,10 +78,10 @@ export default function Home() {
 
           <div className="flex flex-col gap-4 sm:h-full justify-between">
             <div className="flex flex-col gap-2">
-              <h1 className="text-5xl sm:text-8xl font-serif">
+              <h1 className="text-5xl sm:text-8xl font-haas-bold">
                 Hi, I&apos;m <span className="text-brand">Benny!</span>
               </h1>
-              <h2 className="text-2xl sm:text-4xl font-sans">
+              <h2 className="text-2xl sm:text-4xl font-haas-regular">
                 Programmer and Jazz Trombonist, specializing in full stack
                 app/web development and bebop trombone.{" "}
                 <AudioPlayer playlist={playlist} />
@@ -90,8 +90,8 @@ export default function Home() {
                 </span>
               </h2>
               <div className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-4">
-                <MyWorkButton className="w-full sm:w-auto h-12 rounded-full text-xl font-serif px-12" />
-                <ContactButton className="w-full sm:w-auto h-12 rounded-full text-xl font-serif px-12" />
+                <MyWorkButton className="w-full sm:w-auto h-12 rounded-full text-xl font-haas-bold px-12" />
+                <ContactButton className="w-full sm:w-auto h-12 rounded-full text-xl font-haas-bold px-12" />
               </div>
             </div>
             <div className="flex flex-col gap-2">

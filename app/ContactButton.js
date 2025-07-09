@@ -8,7 +8,7 @@ export default function ContactButton({ className, ...props }) {
     <Button
       size="lg"
       {...props}
-      className={cn("rounded-full font-serif", className)}
+      className={cn("rounded-full font-haas-bold", className)}
       onClick={() => {
         window.location.href = "#contact"
       }}>

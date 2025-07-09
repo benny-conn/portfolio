@@ -19,7 +19,7 @@ export default function Contact() {
       <div className="px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4">
           <div className="space-y-2">
-            <h2 className="font-serif text-4xl md:text-6xl text-brand">
+            <h2 className="font-haas-bold text-4xl md:text-6xl text-brand">
               Summon my services!
             </h2>
             <p className="text-muted-foreground">
@@ -27,7 +27,7 @@ export default function Contact() {
               free to reach out!
             </p>
           </div>
-          <div className="w-full max-w-screen-md space-y-4">
+          <div className="w-full max-w-(--breakpoint-md) space-y-4">
             <form
               action="https://formspree.io/f/mrbzwrzv"
               method="POST"

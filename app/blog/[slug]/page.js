@@ -32,7 +32,7 @@ export default async function BlogPost({ params }) {
         </Button>
 
         <div className="flex flex-col gap-4">
-          <h1 className="text-4xl sm:text-6xl font-serif leading-tight">
+          <h1 className="text-4xl sm:text-6xl font-haas-bold leading-tight">
             {post.title}
           </h1>
 
@@ -63,13 +63,13 @@ export default async function BlogPost({ params }) {
             <CardContent className="p-6 sm:p-8">
               <div
                 className="prose prose-lg prose-neutral dark:prose-invert max-w-none
-                  prose-headings:font-serif prose-headings:text-foreground
+                  prose-headings:font-haas-bold prose-headings:text-foreground
                   prose-h1:text-4xl prose-h1:font-bold prose-h1:mb-6 prose-h1:mt-8
                   prose-h2:text-3xl prose-h2:font-bold prose-h2:mb-4 prose-h2:mt-8
                   prose-h3:text-2xl prose-h3:font-bold prose-h3:mb-3 prose-h3:mt-6
                   prose-h4:text-xl prose-h4:font-bold prose-h4:mb-2 prose-h4:mt-4
                   prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4
-                  prose-a:text-brand prose-a:font-medium prose-a:no-underline hover:prose-a:underline
+                  prose-a:text-brand prose-a:font-medium prose-a:no-underline prose-a:hover:underline
                   prose-strong:text-foreground prose-strong:font-semibold
                   prose-em:text-foreground prose-em:italic
                   prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
@@ -118,7 +118,7 @@ function TableOfContents({ content }) {
   return (
     <Card>
       <CardContent className="p-4">
-        <h3 className="font-serif text-lg font-semibold mb-4">
+        <h3 className="font-haas-bold text-lg font-semibold mb-4">
           Table of Contents
         </h3>
         <nav>

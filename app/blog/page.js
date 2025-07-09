@@ -17,7 +17,7 @@ export default function BlogPage() {
   return (
     <main className="p-4 sm:p-8 flex flex-col gap-8 sm:gap-12">
       <div className="flex flex-col gap-4">
-        <h1 className="text-6xl sm:text-8xl font-serif">Blog</h1>
+        <h1 className="text-6xl sm:text-8xl font-haas-bold">Blog</h1>
         <p className="text-xl text-muted-foreground max-w-prose">
           Thoughts I thought were worth sharing.
         </p>
@@ -41,7 +41,7 @@ export default function BlogPage() {
             <Card key={post.slug} className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex flex-col gap-2">
-                  <CardTitle className="text-2xl font-serif hover:text-brand transition-colors">
+                  <CardTitle className="text-2xl font-haas-bold hover:text-brand transition-colors">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </CardTitle>
                   <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
