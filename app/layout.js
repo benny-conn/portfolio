@@ -17,6 +17,9 @@ const hassRegular = localFont({
 export const metadata = {
   title: "Benny Conn",
   description: "Programmer, musician, and fun guy!",
+  icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({ children }) {

@@ -5,6 +5,7 @@ import Work from "./Work"
 import Contact from "./Contact"
 import ContactButton from "./ContactButton"
 import MyWorkButton from "./MyWorkButton"
+import BlogButton from "./BlogButton"
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons"
 
 const playlist = [
@@ -49,6 +50,7 @@ export default function Home() {
           />
         </div>
         <div className="flex flex-row gap-4 items-center">
+          <BlogButton />
           <a href="https://github.com/benny-conn" target="_blank">
             <GitHubLogoIcon className="w-6 h-6" />
           </a>
