@@ -2,6 +2,7 @@ import localFont from "next/font/local"
 import "./globals.css"
 import { AudioProvider } from "@/components/AudioPlayer"
 import { Toaster } from "@/components/ui/toaster"
+import { Analytics } from "@vercel/analytics/next"
 
 const haasBold = localFont({
   src: "./fonts/AlteHaasBold.ttf",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
         className={`${haasBold.variable} ${hassRegular.variable} antialiased max-w-(--breakpoint-2xl) mx-auto`}>
         <AudioProvider>{children}</AudioProvider>
         <Toaster />
+        <Analytics />
       </body>
     </html>
   )
