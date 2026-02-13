@@ -5,7 +5,6 @@ import Work from "./Work"
 import Contact from "./Contact"
 import ContactButton from "./ContactButton"
 import MyWorkButton from "./MyWorkButton"
-import BlogButton from "./BlogButton"
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons"
 
 const playlist = [
@@ -50,7 +49,6 @@ export default function Home() {
           />
         </div>
         <div className="flex flex-row gap-4 items-center">
-          <BlogButton />
           <a href="https://github.com/benny-conn" target="_blank">
             <GitHubLogoIcon className="w-6 h-6" />
           </a>
@@ -82,8 +80,9 @@ export default function Home() {
                 Hi, I&apos;m <span className="text-brand">Benny!</span>
               </h1>
               <h2 className="text-2xl sm:text-4xl font-haas-regular">
-                Programmer and Jazz Trombonist, specializing in full stack
-                app/web development and bebop trombone.{" "}
+                Founder, Programmer, and Jazz Trombonist, specializing in
+                creative event production, full stack app/web development, and
+                bebop trombone.{" "}
                 <AudioPlayer playlist={playlist} />
                 <span className="text-brand text-xs ml-4">
                   (Click to listen)

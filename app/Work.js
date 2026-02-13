@@ -4,14 +4,18 @@ import { Separator } from "@/components/ui/separator"
 import {
   Bell,
   Briefcase,
+  Calendar,
+  Camera,
   ChartNoAxesColumnIncreasing,
   Crown,
   Grid,
   HandCoins,
+  Heart,
   ImageIcon,
   MapPin,
   Megaphone,
   Settings,
+  Sparkles,
   Users2,
   Waypoints,
 } from "lucide-react"
@@ -25,9 +29,89 @@ export default function Work() {
       <h2 className="text-6xl sm:text-8xl font-haas-bold ">My work</h2>
       <Separator className="w-full my-8" />
       <div className="flex flex-col gap-32">
+        <CurationEvents />
         <Gig />
         <Gallery />
         <Minecraft />
+      </div>
+    </div>
+  )
+}
+
+const CurationEvents = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col md:flex-row gap-6 items-start">
+        <div className="relative h-32 w-32 shrink-0">
+          <Image
+            src="/images/curation/logo.png"
+            alt="curation events logo"
+            fill
+            className="object-contain rounded-xl"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <h3 className="text-2xl text-muted-foreground">
+            Co-Founder & Creative Director
+          </h3>
+          <p className="text-xl max-w-prose">
+            <span className="font-haas-bold hover:underline text-brand">
+              <a href="https://curation.events" target="_blank">
+                Curation Events
+              </a>
+            </span>{" "}
+            is a full-service creative corporate event planning and execution
+            agency specializing in employee health and wellness events. Working
+            with brands like Spotify, Aetna, and Interlude Studios, we create
+            memorable experiential activations across Los Angeles and New York.
+          </p>
+        </div>
+      </div>
+
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col gap-4 w-full">
+          <FeatureCard
+            icon={Sparkles}
+            title="Custom Brand Activations"
+            description="Design and execute unique experiential events featuring proprietary activations like our Blind Bag Vending Machine™, Clay Station™, and Hand-Drawn Photobooth™ that create shareable, memorable moments."
+          />
+          <FeatureCard
+            icon={Heart}
+            title="Employee Wellness Events"
+            description="Specialize in creating engaging corporate wellness experiences that boost morale, strengthen team bonds, and promote healthy workplace culture through creative activities and experiences."
+          />
+          <FeatureCard
+            icon={Calendar}
+            title="Full-Service Production"
+            description="Handle the complete event lifecycle from concept to execution, including venue sourcing, logistics coordination, branded merchandise, audiovisual production, and professional photography."
+          />
+          <FeatureCard
+            icon={Users2}
+            title="Corporate Event Planning"
+            description="Partner with major brands to deliver high-impact corporate events, product launches, and team experiences with meticulous attention to detail and creative excellence."
+          />
+        </div>
+        <div className="w-full relative h-[600px] rounded-lg overflow-hidden">
+          <Image
+            src="/images/curation/having-fun.jpg"
+            fill
+            className="object-cover"
+            alt="curation events in action"
+          />
+        </div>
+      </div>
+      <div className="flex flex-col md:flex-row items-center gap-4">
+        <ContactButton
+          variant="secondary"
+          className="h-12 rounded-full text-xl font-haas-bold px-12"
+        />
+        <Button
+          className="px-12 rounded-full h-12 font-haas-bold text-xl"
+          size="lg">
+          <a href="https://curation.events" target="_blank">
+            Visit Curation Events
+          </a>
+        </Button>
       </div>
     </div>
   )
