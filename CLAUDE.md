@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal portfolio website built with Next.js showcasing Benny Conn's work as a programmer and jazz trombonist. The site features an audio player for jazz recordings, project showcases, and contact functionality.
+This is a personal portfolio website built with Next.js showcasing Benny Conn's work as a founder, programmer, and jazz trombonist. The site features an audio player for jazz recordings, project showcases, and contact functionality.
 
 ## Development Commands
 
@@ -23,7 +23,6 @@ This is a personal portfolio website built with Next.js showcasing Benny Conn's 
 - **Package Manager**: Yarn 4.5.0
 - **UI Components**: Radix UI primitives via shadcn/ui
 - **Icons**: Lucide React icons and Radix UI icons
-- **Markdown**: Remark with rehype pipeline for blog posts
 
 ### Project Structure
 ```
@@ -34,11 +33,6 @@ app/                    # Next.js app router pages
 ├── Contact.js         # Contact form (uses Formspree)
 ├── ContactButton.js   # Reusable contact button
 ├── MyWorkButton.js    # Navigation button to work section
-├── BlogButton.js      # Navigation button to blog
-├── blog/              # Blog pages
-│   ├── page.js        # Blog listing page
-│   └── [slug]/        # Individual blog post pages
-│       └── page.js    # Blog post component
 └── globals.css        # Global styles and CSS variables
 
 components/            # Reusable components
@@ -53,11 +47,7 @@ hooks/                 # Custom React hooks
 └── use-toast.js      # Toast notification hook
 
 lib/                   # Utility libraries
-├── utils.js          # Tailwind class utilities
-└── blog.js           # Blog markdown processing utilities
-
-content/               # Content files
-└── blog/             # Blog posts in markdown format
+└── utils.js          # Tailwind class utilities
 
 public/               # Static assets
 ├── audio/            # Audio files for music player
@@ -80,22 +70,15 @@ public/               # Static assets
 - Responsive design with mobile-first approach
 
 #### Project Showcase
-Three main projects highlighted in `Work.js`:
-1. **Gig App** - Full-stack musician platform (React Native, Go, PostgreSQL)
-2. **Gallery** - Art sharing platform backend (Go, GraphQL, GCP)
-3. **Minecraft Plugins** - Java/Kotlin game modifications
+Four main projects highlighted in `Work.js`:
+1. **Curation Events** - Creative corporate event planning agency (Co-Founder & Creative Director)
+2. **Gig App** - Full-stack musician platform (React Native, Go, PostgreSQL)
+3. **Gallery** - Art sharing platform backend (Go, GraphQL, GCP)
+4. **Minecraft Plugins** - Java/Kotlin game modifications
 
 #### Contact Form
 - Integrated with Formspree for form handling
 - Form action: `https://formspree.io/f/mrbzwrzv`
-
-#### Blog System
-- Markdown-based blog posts stored in `content/blog/`
-- Uses remark-rehype pipeline for processing markdown to HTML
-- Automatic table of contents generation with `rehype-toc`
-- Heading anchor links with `rehype-slug`
-- Support for frontmatter metadata (title, date, excerpt, tags)
-- Responsive design with sticky TOC on individual post pages
 
 ## Configuration Files
 
@@ -113,19 +96,3 @@ Three main projects highlighted in `Work.js`:
 - Images are optimized using Next.js Image component
 - Forms use native HTML form submission to external service
 - No custom API routes - static site with external form handling
-
-### Blog Content Management
-
-To add new blog posts:
-1. Create a new `.md` file in `content/blog/`
-2. Add frontmatter with metadata:
-   ```markdown
-   ---
-   title: "Your Post Title"
-   date: "2024-01-15"
-   excerpt: "Brief description"
-   tags: ["tag1", "tag2"]
-   ---
-   ```
-3. Write content in markdown with headings for automatic TOC generation
-4. The blog system will automatically generate slugs and handle routing
