@@ -4,8 +4,6 @@ import { Separator } from "@/components/ui/separator"
 import {
   Bell,
   Briefcase,
-  Calendar,
-  Camera,
   ChartNoAxesColumnIncreasing,
   Crown,
   Grid,
@@ -52,7 +50,7 @@ const CurationEvents = () => {
         </div>
         <div className="flex flex-col gap-1">
           <h3 className="text-2xl text-muted-foreground">
-            Co-Founder & Creative Director
+            Founder & CEO
           </h3>
           <p className="text-xl max-w-prose">
             <span className="font-haas-bold hover:underline text-brand">
@@ -60,11 +58,27 @@ const CurationEvents = () => {
                 Curation Events
               </a>
             </span>{" "}
-            is a full-service creative corporate event planning and execution
-            agency specializing in employee health and wellness events. Working
-            with brands like Spotify, Aetna, and Interlude Studios, we create
-            memorable experiential activations across Los Angeles and New York.
+            is a full-service experiential event studio delivering large-scale
+            corporate activations that combine creative production, technology,
+            and live engagement systems. Working with brands like Spotify,
+            Aetna, and Interlude Studios, we design immersive experiences
+            serving 1,000+ attendees across New York and Los Angeles.
           </p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-4 my-2">
+        <div className="flex flex-col items-center justify-center p-4 border border-border rounded-xl gap-1">
+          <span className="text-3xl sm:text-4xl font-haas-bold text-brand">1,000+</span>
+          <span className="text-xs sm:text-sm text-muted-foreground text-center">Attendees Served</span>
+        </div>
+        <div className="flex flex-col items-center justify-center p-4 border border-border rounded-xl gap-1">
+          <span className="text-3xl sm:text-4xl font-haas-bold text-brand">200+</span>
+          <span className="text-xs sm:text-sm text-muted-foreground text-center">Staff & Vendors Coordinated</span>
+        </div>
+        <div className="flex flex-col items-center justify-center p-4 border border-border rounded-xl gap-1">
+          <span className="text-3xl sm:text-4xl font-haas-bold text-brand">100%</span>
+          <span className="text-xs sm:text-sm text-muted-foreground text-center">Satisfaction — Spotify × Aetna</span>
         </div>
       </div>
 
@@ -72,23 +86,23 @@ const CurationEvents = () => {
         <div className="flex flex-col gap-4 w-full">
           <FeatureCard
             icon={Sparkles}
-            title="Custom Brand Activations"
-            description="Design and execute unique experiential events featuring proprietary activations like our Blind Bag Vending Machine™, Clay Station™, and Hand-Drawn Photobooth™ that create shareable, memorable moments."
+            title="Immersive Brand Activations"
+            description="Design and execute large-scale experiential events integrating interactive installations, games, and social participation mechanics — built from scratch for each client to drive shareability and brand engagement."
+          />
+          <FeatureCard
+            icon={Settings}
+            title="Digital Engagement Systems"
+            description="Built custom digital infrastructure for live events including QR-based interactions, real-time leaderboards, and custom participation tools that measurably increase attendee engagement and content sharing."
           />
           <FeatureCard
             icon={Heart}
             title="Employee Wellness Events"
-            description="Specialize in creating engaging corporate wellness experiences that boost morale, strengthen team bonds, and promote healthy workplace culture through creative activities and experiences."
-          />
-          <FeatureCard
-            icon={Calendar}
-            title="Full-Service Production"
-            description="Handle the complete event lifecycle from concept to execution, including venue sourcing, logistics coordination, branded merchandise, audiovisual production, and professional photography."
+            description="Specialize in corporate wellness experiences that strengthen team bonds and promote healthy workplace culture. Our Spotify × Aetna wellness event achieved 100% attendee satisfaction across 300+ employees."
           />
           <FeatureCard
             icon={Users2}
-            title="Corporate Event Planning"
-            description="Partner with major brands to deliver high-impact corporate events, product launches, and team experiences with meticulous attention to detail and creative excellence."
+            title="End-to-End Production"
+            description="Architect and oversee operational frameworks coordinating 200+ staff, vendors, and performers across complex multi-day events. One team, full accountability — concept through post-event analysis."
           />
         </div>
         <div className="w-full relative h-[600px] rounded-lg overflow-hidden">

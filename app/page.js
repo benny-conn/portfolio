@@ -55,9 +55,10 @@ export default function Home() {
           <a href="https://www.linkedin.com/in/benny-conn/" target="_blank">
             <LinkedInLogoIcon className="w-6 h-6" />
           </a>
-          <a href="https://github.com/benny-conn" target="_blank">
-            <ContactButton />
+          <a href="/resume.pdf" target="_blank" className="text-sm font-haas-bold hover:text-brand transition-colors">
+            Resume
           </a>
+          <ContactButton />
         </div>
       </div>
       <div className="flex flex-col gap-8 sm:gap-12">
