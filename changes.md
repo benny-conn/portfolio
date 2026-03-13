@@ -10,7 +10,7 @@ Love all three suggestions do them
 
 #### Gallery
 
-All good minus the github stuff, no need and the repo isn't public yet anyway
+All good minus the github stuff, no need and the repo isn't public yet anyway, I included the whole `tokenprocessing` package of sample go code in public/code/gallery a bunch of golang files, you can make your best judgement on how it works and what to include.
 
 #### Gig App
 

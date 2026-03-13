@@ -1,7 +1,39 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
-import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons"
 import { projects } from "@/lib/projects"
+import HeroSection from "@/components/HeroSection"
+
+async function fetchGitHubStats() {
+  try {
+    const res = await fetch("https://api.github.com/users/benny-conn", {
+      next: { revalidate: 3600 },
+      headers: { "User-Agent": "bennycom-portfolio" },
+    })
+    if (!res.ok) return null
+    const user = await res.json()
+    return { publicRepos: user.public_repos || 0 }
+  } catch {
+    return null
+  }
+}
+
+async function fetchWeather() {
+  try {
+    const res = await fetch(
+      "https://api.open-meteo.com/v1/forecast?latitude=40.71&longitude=-74.01&current=weather_code,is_day&timezone=America/New_York",
+      { next: { revalidate: 1800 } },
+    )
+
+    if (!res.ok) return null
+    const data = await res.json()
+    return {
+      code: data.current.weather_code,
+      isDay: data.current.is_day === 1,
+    }
+  } catch {
+    return null
+  }
+}
 
 function ProjectCard({ project }) {
   return (
@@ -34,51 +66,17 @@ function ProjectCard({ project }) {
   )
 }
 
-export default function Home() {
+export default async function Home() {
+  const [githubStats, weather] = await Promise.all([
+    fetchGitHubStats(),
+    fetchWeather(),
+  ])
   const featured = projects.filter(p => p.featured)
   const other = projects.filter(p => !p.featured)
 
   return (
     <main>
-      <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center max-w-2xl mx-auto px-6 pt-16 pb-24">
-        <p className="text-xs text-muted-foreground uppercase tracking-widest mb-8">
-          New York, NY
-        </p>
-        <h1 className="text-5xl sm:text-7xl font-bold tracking-tight mb-4">
-          Benny Conn
-        </h1>
-        <p className="text-xl sm:text-2xl text-brand font-medium mb-6">
-          Full-Stack Software Engineer, backend-specialized.
-        </p>
-        <p className="text-base text-muted-foreground max-w-lg leading-relaxed mb-10">
-          I build backend systems and AI-powered products. Currently CTO at
-          Trackyard, building music licensing infrastructure for film and TV.
-          Previously Backend Software Engineer II at Gallery.
-        </p>
-        <div className="flex items-center gap-6">
-          <a
-            href="https://github.com/benny-conn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors">
-            <GitHubLogoIcon className="w-5 h-5" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/benny-conn/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors">
-            <LinkedInLogoIcon className="w-5 h-5" />
-          </a>
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Resume
-          </a>
-        </div>
-      </section>
+      <HeroSection githubStats={githubStats} weather={weather} />
 
       <section id="work" className="max-w-2xl mx-auto px-6 pb-32">
         <p className="text-xs text-muted-foreground uppercase tracking-widest mb-8">
