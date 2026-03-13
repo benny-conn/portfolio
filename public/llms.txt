@@ -1,0 +1,39 @@
+# Benny Conn
+
+> Full-Stack Software Engineer, CTO & Founding Engineer, Jazz Trombonist. Based in New York City.
+
+Benny Conn is a software engineer and founder specializing in backend systems, AI-powered platforms, and full-stack product development. He is currently CTO and Founding Engineer at Trackyard, a music licensing platform for film and television. He is also a jazz trombonist.
+
+## About
+
+- **Location**: New York City, NY
+- **Current Role**: CTO & Founding Engineer at Trackyard (trackyard.com)
+- **Previous Role**: Backend Software Engineer II at Gallery (gallery.so)
+- **Specialties**: Go, PostgreSQL, React, AWS, GCP, Docker, AI/ML, GraphQL, Redis
+- **GitHub**: github.com/benny-conn
+- **LinkedIn**: linkedin.com/in/benny-conn
+
+## Projects
+
+### Trackyard (trackyard.com)
+AI-powered music licensing platform for film and television. As CTO and founding engineer, architected the core AI search infrastructure, automated media pipelines, and social content tools that became the company's primary revenue driver.
+
+### Gallery (gallery.so)
+Social platform for sharing and discovering art. Built and maintained backend infrastructure handling millions of media assets, real-time notifications, and third-party data sync using Go, GraphQL, GCP.
+
+### Gig App (gig.app)
+Full-stack platform for gigging musicians — built the entire stack from React Native mobile app to Go backend, including Stripe payment splits, Redis caching, and AI-powered marketing automation.
+
+### Minecraft Plugins
+Developed multiple Minecraft plugins used by thousands of multiplayer servers globally, including Civilizations (land claiming and politics system) and Bundle (a plugin package manager). Built in Java and Kotlin.
+
+### Curation Events (curation.events)
+Co-founded and led a full-service experiential event studio delivering large-scale corporate activations for brands including Spotify and Aetna. Served 1,000+ attendees across New York and Los Angeles.
+
+## Music
+
+Benny is a jazz trombonist based in New York City.
+
+## Contact
+
+Available at bennyconn.com/contact

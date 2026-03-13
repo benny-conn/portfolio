@@ -11,7 +11,18 @@ export async function generateMetadata({ params }) {
   const { slug } = await params
   const project = projects.find(p => p.slug === slug)
   if (!project) return {}
-  return { title: `${project.name} — Benny Conn` }
+  return {
+    title: project.name,
+    description: project.tagline,
+    openGraph: {
+      title: `${project.name} — Benny Conn`,
+      description: project.tagline,
+      url: `/work/${slug}`,
+    },
+    alternates: {
+      canonical: `/work/${slug}`,
+    },
+  }
 }
 
 export default async function ProjectPage({ params }) {
