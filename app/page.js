@@ -1,124 +1,132 @@
-import AudioPlayer, { FixedAudioPlayer } from "@/components/AudioPlayer"
-import { MapPin } from "lucide-react"
-import Image from "next/image"
-import Work from "./Work"
-import Contact from "./Contact"
-import ContactButton from "./ContactButton"
-import MyWorkButton from "./MyWorkButton"
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons"
+import { projects } from "@/lib/projects"
 
-const playlist = [
-  {
-    src: "/audio/blues.wav",
-    name: "Blues to Be There - Duke Ellington",
-    description: "The Benny Conn Big Band",
-  },
-  {
-    src: "/audio/quietude.wav",
-    name: "Quietude - Thad Jones",
-    description: "The Benny Conn Big Band",
-  },
-  {
-    src: "/audio/queen.wav",
-    name: "Queen Bee - Count Basie",
-    description: "The Benny Conn Big Band",
-  },
-  {
-    src: "/audio/solo.wav",
-    name: "Short Trombone Solo",
-    description: "Benny Conn",
-  },
-  {
-    src: "/audio/original-big-band.m4a",
-    name: "Everything After",
-    description: "Big Band Original Section",
-  },
-]
+function ProjectCard({ project }) {
+  return (
+    <Link
+      href={`/work/${project.slug}`}
+      className="group flex flex-col border border-border rounded-none p-6 hover:border-brand/60 transition-all duration-200 min-h-44">
+      <div className="flex items-start justify-between mb-4">
+        <span className="text-xs text-muted-foreground">{project.role}</span>
+        <ArrowUpRight
+          size={14}
+          className="text-muted-foreground group-hover:text-brand transition-colors flex-shrink-0"
+        />
+      </div>
+      <h3 className="text-base font-semibold mb-2">{project.name}</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-4">
+        {project.tagline}
+      </p>
+      {project.tech.length > 0 && (
+        <div className="flex flex-wrap gap-1.5">
+          {project.tech.slice(0, 4).map(t => (
+            <span
+              key={t}
+              className="text-xs px-2 py-0.5 rounded-sm bg-secondary text-muted-foreground">
+              {t}
+            </span>
+          ))}
+        </div>
+      )}
+    </Link>
+  )
+}
 
 export default function Home() {
+  const featured = projects.filter(p => p.featured)
+  const other = projects.filter(p => !p.featured)
+
   return (
-    <main className="p-4 sm:p-8 pb-20 flex flex-col gap-8 sm:gap-12 relative">
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
-        <div className="relative w-48 h-24 md:w-64 md:h-24">
-          <Image
-            src="/logo.png"
-            alt="logo"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="flex flex-row gap-4 items-center">
-          <a href="https://github.com/benny-conn" target="_blank">
-            <GitHubLogoIcon className="w-6 h-6" />
+    <main>
+      <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center max-w-2xl mx-auto px-6 pt-16 pb-24">
+        <p className="text-xs text-muted-foreground uppercase tracking-widest mb-8">
+          New York, NY
+        </p>
+        <h1 className="text-5xl sm:text-7xl font-bold tracking-tight mb-4">
+          Benny Conn
+        </h1>
+        <p className="text-xl sm:text-2xl text-brand font-medium mb-6">
+          Full-Stack Software Engineer, backend-specialized.
+        </p>
+        <p className="text-base text-muted-foreground max-w-lg leading-relaxed mb-10">
+          I build backend systems and AI-powered products. Currently CTO at
+          Trackyard, building music licensing infrastructure for film and TV.
+          Previously Backend Software Engineer II at Gallery.
+        </p>
+        <div className="flex items-center gap-6">
+          <a
+            href="https://github.com/benny-conn"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-foreground transition-colors">
+            <GitHubLogoIcon className="w-5 h-5" />
           </a>
-          <a href="https://www.linkedin.com/in/benny-conn/" target="_blank">
-            <LinkedInLogoIcon className="w-6 h-6" />
+          <a
+            href="https://www.linkedin.com/in/benny-conn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-foreground transition-colors">
+            <LinkedInLogoIcon className="w-5 h-5" />
           </a>
-          <a href="/resume.pdf" target="_blank" className="text-sm font-haas-bold hover:text-brand transition-colors">
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             Resume
           </a>
-          <ContactButton />
         </div>
-      </div>
-      <div className="flex flex-col gap-8 sm:gap-12">
-        <div className="flex flex-col sm:flex-row gap-8 sm:h-[600px]">
-          <div className="flex items-center justify-center">
-            <div className="relative h-[300px] sm:h-full w-full sm:w-[440px] rounded-lg overflow-hidden">
-              <Image
-                src="/happy.jpg"
-                alt="benny looking happy"
-                fill
-                priority
-                className="object-cover"
-              />
-            </div>
-          </div>
+      </section>
 
-          <div className="flex flex-col gap-4 sm:h-full justify-between">
-            <div className="flex flex-col gap-2">
-              <h1 className="text-5xl sm:text-8xl font-haas-bold">
-                Hi, I&apos;m <span className="text-brand">Benny!</span>
-              </h1>
-              <h2 className="text-2xl sm:text-4xl font-haas-regular">
-                Founder, Programmer, and Jazz Trombonist, specializing in
-                creative event production, full stack app/web development, and
-                bebop trombone.{" "}
-                <AudioPlayer playlist={playlist} />
-                <span className="text-brand text-xs ml-4">
-                  (Click to listen)
-                </span>
-              </h2>
-              <div className="flex flex-col sm:flex-row gap-4 items-center justify-start pt-4">
-                <MyWorkButton className="w-full sm:w-auto h-12 rounded-full text-xl font-haas-bold px-12" />
-                <ContactButton className="w-full sm:w-auto h-12 rounded-full text-xl font-haas-bold px-12" />
-              </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <div className="flex flex-row gap-2 items-center justify-end">
-                <div className="flex flex-row gap-2 items-center justify-center">
-                  <MapPin className="w-4 h-4 text-muted-foreground" />
-                  <p className="text-base text-muted-foreground">
-                    New York, NY
-                  </p>
-                </div>
-              </div>
-              <div className="w-full h-60 sm:h-80 rounded-lg overflow-hidden relative">
-                <Image
-                  src="/trombone-4.jpg"
-                  alt="benny playing trombone"
-                  fill
-                  priority
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
+      <section id="work" className="max-w-2xl mx-auto px-6 pb-32">
+        <p className="text-xs text-muted-foreground uppercase tracking-widest mb-8">
+          Selected Work
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-16">
+          {featured.map(p => (
+            <ProjectCard key={p.slug} project={p} />
+          ))}
         </div>
-        <Work />
-        <Contact />
-      </div>
-      <FixedAudioPlayer />
+
+        {other.length > 0 && (
+          <>
+            <p className="text-xs text-muted-foreground uppercase tracking-widest mb-6">
+              Other
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-16">
+              {other.map(p => (
+                <ProjectCard key={p.slug} project={p} />
+              ))}
+            </div>
+          </>
+        )}
+
+        <p className="text-xs text-muted-foreground uppercase tracking-widest mb-6">
+          Open Source
+        </p>
+        <a
+          href="https://clawhub.ai/benny-conn/trackyard"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center justify-between border border-border rounded-none p-6 hover:border-brand/60 transition-all duration-200">
+          <div>
+            <p className="text-xs text-muted-foreground mb-2">
+              Published OpenClaw Skill
+            </p>
+            <h3 className="text-base font-semibold mb-1">trackyard</h3>
+            <p className="text-sm text-muted-foreground">
+              AI music search across the Trackyard catalog, published on
+              OpenClaw.
+            </p>
+          </div>
+          <ArrowUpRight
+            size={14}
+            className="text-muted-foreground group-hover:text-brand transition-colors ml-6 flex-shrink-0"
+          />
+        </a>
+      </section>
     </main>
   )
 }

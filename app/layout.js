@@ -1,23 +1,18 @@
-import localFont from "next/font/local"
+import { JetBrains_Mono } from "next/font/google"
 import "./globals.css"
-import { AudioProvider } from "@/components/AudioPlayer"
+import { AudioProvider, FixedAudioPlayer } from "@/components/AudioPlayer"
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/next"
+import Nav from "@/components/Nav"
 
-const haasBold = localFont({
-  src: "./fonts/AlteHaasBold.ttf",
-  variable: "--font-haas-bold",
-  weight: "100 900",
-})
-const hassRegular = localFont({
-  src: "./fonts/AlteHaasRegular.ttf",
-  variable: "--font-haas-regular",
-  weight: "100 900",
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
 })
 
 export const metadata = {
   title: "Benny Conn",
-  description: "Programmer, musician, and fun guy!",
+  description: "Full-Stack Software Engineer, backend-specialized.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -26,9 +21,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${haasBold.variable} ${hassRegular.variable} antialiased max-w-(--breakpoint-2xl) mx-auto`}>
-        <AudioProvider>{children}</AudioProvider>
+      <body className={`${jetbrainsMono.variable} antialiased`}>
+        <AudioProvider>
+          <Nav />
+          {children}
+          <FixedAudioPlayer />
+        </AudioProvider>
         <Toaster />
         <Analytics />
       </body>
