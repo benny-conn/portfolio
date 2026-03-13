@@ -16,7 +16,7 @@ export default function VideoSection({ baseUrl }) {
   const [activeIdx, setActiveIdx] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const videoRef = useRef(null)
-  const isInitialMount = useRef(true)
+  const shouldAutoplay = useRef(false)
 
   useEffect(() => {
     const el = videoRef.current
@@ -43,16 +43,16 @@ export default function VideoSection({ baseUrl }) {
       }
       return
     }
+    shouldAutoplay.current = true
     setActiveIdx(idx)
     setIsPlaying(false)
   }
 
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false
-      return
+    if (shouldAutoplay.current) {
+      shouldAutoplay.current = false
+      videoRef.current?.play().catch(() => {})
     }
-    videoRef.current?.play().catch(() => {})
   }, [activeIdx])
 
   const activeVideo = VIDEOS[activeIdx]

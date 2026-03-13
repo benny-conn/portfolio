@@ -35,7 +35,7 @@ export default function MusicPage() {
       <p className="text-xs text-muted-foreground uppercase tracking-widest mt-16 mb-6">
         Live at Smalls
       </p>
-      <VideoSection baseUrl={process.env.R2_URL} />
+      <VideoSection baseUrl={process.env.NEXT_PUBLIC_R2_URL} />
     </main>
   )
 }
