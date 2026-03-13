@@ -302,11 +302,11 @@ function WeatherBackground({ type }) {
         <div className="absolute top-0 right-20 overflow-visible">
           {/* Cloud 1: all 5 pieces move together as one cloud */}
           {[
-            { t: 52, r: 4, w: 160, h: 64 }, // base body
-            { t: 20, r: 68, w: 96, h: 92 }, // left bump
-            { t: 8, r: 44, w: 108, h: 96 }, // center bump (tallest)
-            { t: 22, r: 14, w: 80, h: 76 }, // right bump
-            { t: 24, r: 90, w: 72, h: 68 }, // far-left small bump
+            { t: 52, r: 4, w: 260, h: 64 }, // base body
+            { t: 20, r: 68, w: 196, h: 92 }, // left bump
+            { t: 8, r: 44, w: 208, h: 96 }, // center bump (tallest)
+            { t: 22, r: 14, w: 180, h: 76 }, // right bump
+            { t: 24, r: 90, w: 172, h: 68 }, // far-left small bump
           ].map((s, i) => (
             <div
               key={i}
@@ -325,11 +325,11 @@ function WeatherBackground({ type }) {
           ))}
           {/* Cloud 2: lower, slightly offset drift timing */}
           {[
-            { t: 100, r: 16, w: 176, h: 68 }, // base
+            { t: 100, r: 16, w: 276, h: 68 }, // base
             { t: 74, r: 88, w: 104, h: 96 }, // left bump
-            { t: 52, r: 60, w: 116, h: 104 }, // center bump
-            { t: 30, r: 20, w: 88, h: 80 }, // right bump
-            { t: 92, r: 112, w: 76, h: 72 }, // far-left bump
+            { t: 52, r: 60, w: 216, h: 104 }, // center bump
+            { t: 30, r: 20, w: 188, h: 80 }, // right bump
+            { t: 92, r: 112, w: 176, h: 72 }, // far-left bump
           ].map((s, i) => (
             <div
               key={i + 5}
