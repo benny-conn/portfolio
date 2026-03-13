@@ -45,8 +45,18 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
+<<<<<<< HEAD
   --font-sans: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, Monaco,
     Consolas, "Liberation Mono", "Courier New", monospace;
+=======
+  --font-sans: var(--font-haas-regular), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-haas-bold: var(--font-haas-bold), ui-serif, Georgia, Cambria,
+    "Times New Roman", Times, serif;
+
+  --font-haas-regular: var(--font-haas-regular);
+  --font-haas-bold: var(--font-haas-bold);
+>>>>>>> 037c08fdc2a89b1b49b7c0de51d0b5c62fa8c9ce
 }
 
 /*
