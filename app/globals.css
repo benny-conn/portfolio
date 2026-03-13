@@ -45,18 +45,9 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
-<<<<<<< HEAD
-  --font-sans: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, Monaco,
-    Consolas, "Liberation Mono", "Courier New", monospace;
-=======
-  --font-sans: var(--font-haas-regular), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-haas-bold: var(--font-haas-bold), ui-serif, Georgia, Cambria,
-    "Times New Roman", Times, serif;
-
-  --font-haas-regular: var(--font-haas-regular);
-  --font-haas-bold: var(--font-haas-bold);
->>>>>>> 037c08fdc2a89b1b49b7c0de51d0b5c62fa8c9ce
+  --font-sans:
+    var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 /*
@@ -152,35 +143,81 @@ body {
 }
 
 @keyframes rain-fall {
-  0% { transform: translateY(-24px) translateX(0px); opacity: 0; }
-  15% { opacity: 0.22; }
-  85% { opacity: 0.22; }
-  100% { transform: translateY(260px) translateX(-18px); opacity: 0; }
+  0% {
+    transform: translateY(-24px) translateX(0px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.22;
+  }
+  85% {
+    opacity: 0.22;
+  }
+  100% {
+    transform: translateY(260px) translateX(-18px);
+    opacity: 0;
+  }
 }
 
 @keyframes snow-fall {
-  0% { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0; }
-  15% { opacity: 0.45; }
-  85% { opacity: 0.45; }
-  100% { transform: translateY(220px) translateX(12px) rotate(180deg); opacity: 0; }
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.45;
+  }
+  85% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateY(220px) translateX(12px) rotate(180deg);
+    opacity: 0;
+  }
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.7; }
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 @keyframes cloud-drift {
-  0%, 100% { transform: translateX(0px); opacity: 0.6; }
-  50% { transform: translateX(10px); opacity: 1; }
+  0%,
+  100% {
+    transform: translateX(0px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(10px);
+    opacity: 1;
+  }
 }
 
 @keyframes fog-drift {
-  0%, 100% { transform: translateX(0px); opacity: 0.4; }
-  50% { transform: translateX(-12px); opacity: 0.7; }
+  0%,
+  100% {
+    transform: translateX(0px);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateX(-12px);
+    opacity: 0.7;
+  }
 }
 
 @keyframes fog-float {
-  0%, 100% { transform: translateY(0px); opacity: 0.8; }
-  50% { transform: translateY(-6px); opacity: 1; }
+  0%,
+  100% {
+    transform: translateY(0px);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
 }
