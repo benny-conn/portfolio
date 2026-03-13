@@ -1,5 +1,6 @@
 import Image from "next/image"
 import MusicSection from "@/components/MusicSection"
+import VideoSection from "@/components/VideoSection"
 
 export const metadata = {
   title: "Music — Benny Conn",
@@ -25,7 +26,16 @@ export default function MusicPage() {
           priority
         />
       </div>
+
+      <p className="text-xs text-muted-foreground uppercase tracking-widest mb-6">
+        Recordings
+      </p>
       <MusicSection />
+
+      <p className="text-xs text-muted-foreground uppercase tracking-widest mt-16 mb-6">
+        Live at Smalls
+      </p>
+      <VideoSection baseUrl={process.env.R2_URL} />
     </main>
   )
 }
