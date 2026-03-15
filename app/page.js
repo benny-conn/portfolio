@@ -2,6 +2,7 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { projects } from "@/lib/projects"
 import HeroSection from "@/components/HeroSection"
+import { fetchSoloTraceData } from "@/lib/solo-trace"
 
 async function fetchGitHubStats() {
   try {
@@ -67,16 +68,18 @@ function ProjectCard({ project }) {
 }
 
 export default async function Home() {
-  const [githubStats, weather] = await Promise.all([
+  const [githubStats, weather, soloTraceData] = await Promise.all([
     fetchGitHubStats(),
     fetchWeather(),
+    fetchSoloTraceData(),
   ])
   const featured = projects.filter(p => p.featured)
-  const other = projects.filter(p => !p.featured)
+  const other = projects.filter(p => !p.featured && !p.openSource)
+  const soloTraceProject = projects.find(p => p.slug === "solo-trace")
 
   return (
     <main>
-      <HeroSection githubStats={githubStats} weather={weather} />
+      <HeroSection githubStats={githubStats} weather={weather} soloTraceData={soloTraceData} />
 
       <section id="work" className="max-w-2xl mx-auto px-6 pb-32">
         <p className="text-xs text-muted-foreground uppercase tracking-widest mb-8">
@@ -104,6 +107,11 @@ export default async function Home() {
         <p className="text-xs text-muted-foreground uppercase tracking-widest mb-6">
           Open Source
         </p>
+        {soloTraceProject && (
+          <div className="mb-3">
+            <ProjectCard project={soloTraceProject} />
+          </div>
+        )}
         <a
           href="https://clawhub.ai/benny-conn/trackyard"
           target="_blank"

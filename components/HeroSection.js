@@ -352,7 +352,70 @@ function WeatherBackground({ type }) {
   )
 }
 
-export default function HeroSection({ githubStats, weather }) {
+function MiniNoteChart({ chromaFreq }) {
+  const max = Math.max(...chromaFreq, 1)
+  const topIdx = chromaFreq.indexOf(Math.max(...chromaFreq))
+  const W = 8
+  const G = 2
+  const H = 14
+
+  return (
+    <svg width={12 * (W + G) - G} height={H} aria-hidden="true">
+      {chromaFreq.map((v, i) => {
+        const h = v > 0 ? Math.max(2, Math.round((v / max) * H)) : 2
+        return (
+          <rect
+            key={i}
+            x={i * (W + G)}
+            y={H - h}
+            width={W}
+            height={h}
+            fill={
+              i === topIdx && v > 0
+                ? "#FFDD00"
+                : v > 0
+                  ? "rgba(255,255,255,0.18)"
+                  : "rgba(255,255,255,0.06)"
+            }
+            rx={1}
+          />
+        )
+      })}
+    </svg>
+  )
+}
+
+function SoloTraceWidget({ data }) {
+  if (!data?.latest) return null
+  const { latest } = data
+  console.log("latest", latest)
+  return (
+    <Link
+      href="/work/solo-trace"
+      className="group flex flex-col gap-2 border border-border hover:border-brand/40 transition-colors p-3 w-fit mb-6">
+      <div className="flex items-center gap-2 flex-wrap">
+        <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+        <span className="text-[10px] text-green-400/70 uppercase tracking-widest">
+          live
+        </span>
+        <span className="text-xs font-medium text-brand">Solo Trace</span>
+        <span className="text-xs text-muted-foreground">
+          · {latest.relativeDate} at Smalls Jazz Club
+        </span>
+      </div>
+      <MiniNoteChart chromaFreq={latest.chromaFreq} />
+      <p className="text-xs text-muted-foreground">
+        {latest.soloCount} solo{latest.soloCount !== 1 ? "s" : ""} ·{" "}
+        {latest.totalNotes.toLocaleString()} notes
+        {latest.topNotes[0]
+          ? ` · ${latest.topNotes[0].note} ×${latest.topNotes[0].count}`
+          : ""}
+      </p>
+    </Link>
+  )
+}
+
+export default function HeroSection({ githubStats, weather, soloTraceData }) {
   const subtitle = useTypewriter(ROLES)
   const audioCtx = useContext(AudioContext)
   const currentTrack = audioCtx?.isPlaying
@@ -399,6 +462,8 @@ export default function HeroSection({ githubStats, weather }) {
         , building music licensing infrastructure for film and TV. Previously
         Backend Software Engineer II at Gallery.
       </p>
+
+      <SoloTraceWidget data={soloTraceData} />
 
       {currentTrack && (
         <Link
