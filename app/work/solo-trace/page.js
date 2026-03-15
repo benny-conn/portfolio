@@ -152,6 +152,99 @@ function SessionCard({ session }) {
   )
 }
 
+const DAY_ORDER = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+]
+const DAY_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+
+function GigsByMonthChart({ data }) {
+  if (!data?.length) return null
+  const last12 = data.slice(-12)
+  const max = Math.max(...last12.map(d => d.count), 1)
+  const BAR_H = 44
+
+  return (
+    <div>
+      <div className="flex items-end gap-0.5" style={{ height: BAR_H }}>
+        {last12.map(({ month, count }) => {
+          const h = count > 0 ? Math.max(4, Math.round((count / max) * BAR_H)) : 3
+          return (
+            <div
+              key={month}
+              className="flex-1 min-w-0"
+              title={`${month}: ${count} gig${count !== 1 ? "s" : ""}`}
+              style={{
+                height: h,
+                backgroundColor:
+                  count > 0 ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.05)",
+              }}
+            />
+          )
+        })}
+      </div>
+      <div className="flex gap-0.5 mt-1.5">
+        {last12.map(({ month }) => (
+          <div key={month} className="flex-1 min-w-0 text-center">
+            <span className="text-[8px] text-muted-foreground/40 leading-none">
+              {month.slice(5)}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function DayOfWeekChart({ data }) {
+  if (!data?.length) return null
+  const byDay = Object.fromEntries(data.map(d => [d.day, d.count]))
+  const counts = DAY_ORDER.map(d => byDay[d] ?? 0)
+  const max = Math.max(...counts, 1)
+  const topIdx = counts.indexOf(Math.max(...counts))
+  const BAR_H = 44
+
+  return (
+    <div>
+      <div className="flex items-end gap-0.5" style={{ height: BAR_H }}>
+        {counts.map((count, i) => {
+          const h = count > 0 ? Math.max(4, Math.round((count / max) * BAR_H)) : 3
+          return (
+            <div
+              key={DAY_ORDER[i]}
+              className="flex-1 min-w-0"
+              title={`${DAY_ORDER[i]}: ${count} gig${count !== 1 ? "s" : ""}`}
+              style={{
+                height: h,
+                backgroundColor:
+                  i === topIdx && count > 0
+                    ? "#FFDD00"
+                    : count > 0
+                      ? "rgba(255,255,255,0.2)"
+                      : "rgba(255,255,255,0.05)",
+              }}
+            />
+          )
+        })}
+      </div>
+      <div className="flex gap-0.5 mt-1.5">
+        {DAY_SHORT.map(d => (
+          <div key={d} className="flex-1 min-w-0 text-center">
+            <span className="text-[8px] text-muted-foreground/40 leading-none">
+              {d}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function parseAnalysis(clip) {
   if (!clip?.Analysis) return null
   try {
@@ -166,6 +259,7 @@ function parseAnalysis(clip) {
 export default async function SoloTracePage() {
   const data = await fetchSoloTraceData()
   const latest = data?.latest
+  const analytics = data?.analytics
 
   return (
     <main className="max-w-2xl mx-auto px-6 pt-32 pb-32">
@@ -336,6 +430,107 @@ export default async function SoloTracePage() {
               <SessionCard key={s.jobId} session={s} />
             ))}
           </div>
+        </div>
+      )}
+
+      {/* All-time analytics */}
+      {analytics && (
+        <div className="mb-16">
+          <p className="text-xs text-muted-foreground uppercase tracking-widest mb-6">
+            All-Time Stats
+          </p>
+
+          {/* Key numbers */}
+          <div className="grid grid-cols-3 gap-3 mb-8">
+            <div className="border border-border p-4">
+              <p className="text-2xl font-bold">
+                {analytics.attendance?.total_gigs ?? "—"}
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">gigs</p>
+            </div>
+            <div className="border border-border p-4">
+              <p className="text-2xl font-bold">
+                {analytics.music?.total_notes != null
+                  ? analytics.music.total_notes.toLocaleString()
+                  : "—"}
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">notes played</p>
+            </div>
+            <div className="border border-border p-4">
+              <p className="text-2xl font-bold text-brand">
+                {analytics.attendance?.longest_streak_days ?? "—"}
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">
+                day streak
+              </p>
+            </div>
+          </div>
+
+          {/* Gigs by month */}
+          {analytics.attendance?.gigs_by_month?.length > 0 && (
+            <div className="mb-8">
+              <p className="text-xs text-muted-foreground uppercase tracking-widest mb-4">
+                Gigs by Month
+              </p>
+              <GigsByMonthChart data={analytics.attendance.gigs_by_month} />
+            </div>
+          )}
+
+          {/* Gigs by day of week */}
+          {analytics.attendance?.gigs_by_day_of_week?.length > 0 && (
+            <div className="mb-8">
+              <div className="flex items-baseline justify-between mb-4">
+                <p className="text-xs text-muted-foreground uppercase tracking-widest">
+                  Gigs by Day
+                </p>
+                {analytics.attendance.busiest_week && (
+                  <p className="text-xs text-muted-foreground">
+                    busiest week: {analytics.attendance.busiest_week.week_of} ·{" "}
+                    {analytics.attendance.busiest_week.count} gigs
+                  </p>
+                )}
+              </div>
+              <DayOfWeekChart data={analytics.attendance.gigs_by_day_of_week} />
+            </div>
+          )}
+
+          {/* Pitch extremes + note density */}
+          {analytics.music && (
+            <div className="grid grid-cols-2 gap-3">
+              {(analytics.music.highest_note_ever ||
+                analytics.music.lowest_note_ever) && (
+                <div className="border border-border p-4">
+                  <p className="text-xs text-muted-foreground mb-2">
+                    Pitch Range
+                  </p>
+                  <p className="text-sm font-medium">
+                    {analytics.music.lowest_note_ever ?? "?"}–
+                    {analytics.music.highest_note_ever ?? "?"}
+                  </p>
+                  {analytics.music.avg_pitch_range_semitones != null && (
+                    <p className="text-xs text-muted-foreground mt-1">
+                      avg {analytics.music.avg_pitch_range_semitones} semitones
+                    </p>
+                  )}
+                </div>
+              )}
+              {analytics.music.avg_note_density_per_s != null && (
+                <div className="border border-border p-4">
+                  <p className="text-xs text-muted-foreground mb-2">
+                    Note Density
+                  </p>
+                  <p className="text-sm font-medium">
+                    {analytics.music.avg_note_density_per_s} notes/sec
+                  </p>
+                  {analytics.music.avg_note_duration_s != null && (
+                    <p className="text-xs text-muted-foreground mt-1">
+                      avg {analytics.music.avg_note_duration_s}s per note
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
 
