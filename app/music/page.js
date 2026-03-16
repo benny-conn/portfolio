@@ -1,3 +1,5 @@
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
 import Image from "next/image"
 import MusicSection from "@/components/MusicSection"
 import VideoSection from "@/components/VideoSection"
@@ -36,6 +38,22 @@ export default function MusicPage() {
         Live at Smalls
       </p>
       <VideoSection baseUrl={process.env.NEXT_PUBLIC_R2_URL} />
+
+      <Link
+        href="/work/solo-trace"
+        className="group flex items-center justify-between border border-border hover:border-brand/40 transition-colors p-3 mt-3">
+        <div>
+          <p className="text-xs text-muted-foreground mb-1">Personal Project</p>
+          <p className="text-sm font-medium text-brand">Solo Trace</p>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Auto-detects and archives my solos from Smalls Jazz Club recordings
+          </p>
+        </div>
+        <ArrowUpRight
+          size={14}
+          className="text-muted-foreground group-hover:text-brand transition-colors ml-6 flex-shrink-0"
+        />
+      </Link>
     </main>
   )
 }

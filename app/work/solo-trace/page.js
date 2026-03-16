@@ -2,7 +2,7 @@ import Link from "next/link"
 import { ArrowLeft, ArrowUpRight } from "lucide-react"
 import { fetchSoloTraceData } from "@/lib/solo-trace"
 
-export const revalidate = 3600
+export const revalidate = 1800
 
 export const metadata = {
   title: "Solo Trace — Benny Conn",
