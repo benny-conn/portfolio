@@ -451,7 +451,7 @@ export default function HeroSection({ githubStats, weather, soloTraceData }) {
       </p>
 
       <p className="text-base text-muted-foreground max-w-lg leading-relaxed mb-10">
-        I build backend systems and AI-powered products. Currently CTO at{" "}
+        I build backend systems and AI-powered products. CTO at{" "}
         <a
           href="https://trackyard.com"
           target="_blank"

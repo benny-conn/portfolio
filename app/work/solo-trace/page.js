@@ -173,7 +173,8 @@ function GigsByMonthChart({ data }) {
     <div>
       <div className="flex items-end gap-0.5" style={{ height: BAR_H }}>
         {last12.map(({ month, count }) => {
-          const h = count > 0 ? Math.max(4, Math.round((count / max) * BAR_H)) : 3
+          const h =
+            count > 0 ? Math.max(4, Math.round((count / max) * BAR_H)) : 3
           return (
             <div
               key={month}
@@ -182,7 +183,9 @@ function GigsByMonthChart({ data }) {
               style={{
                 height: h,
                 backgroundColor:
-                  count > 0 ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.05)",
+                  count > 0
+                    ? "rgba(255,255,255,0.2)"
+                    : "rgba(255,255,255,0.05)",
               }}
             />
           )
@@ -213,12 +216,13 @@ function DayOfWeekChart({ data }) {
     <div>
       <div className="flex items-end gap-0.5" style={{ height: BAR_H }}>
         {counts.map((count, i) => {
-          const h = count > 0 ? Math.max(4, Math.round((count / max) * BAR_H)) : 3
+          const h =
+            count > 0 ? Math.max(4, Math.round((count / max) * BAR_H)) : 3
           return (
             <div
               key={DAY_ORDER[i]}
               className="flex-1 min-w-0"
-              title={`${DAY_ORDER[i]}: ${count} gig${count !== 1 ? "s" : ""}`}
+              title={`${DAY_ORDER[i]}: ${count} session${count !== 1 ? "s" : ""}`}
               style={{
                 height: h,
                 backgroundColor:
@@ -446,7 +450,7 @@ export default async function SoloTracePage() {
               <p className="text-2xl font-bold">
                 {analytics.attendance?.total_gigs ?? "—"}
               </p>
-              <p className="text-xs text-muted-foreground mt-1">gigs</p>
+              <p className="text-xs text-muted-foreground mt-1">sessions</p>
             </div>
             <div className="border border-border p-4">
               <p className="text-2xl font-bold">
@@ -460,9 +464,7 @@ export default async function SoloTracePage() {
               <p className="text-2xl font-bold text-brand">
                 {analytics.attendance?.longest_streak_days ?? "—"}
               </p>
-              <p className="text-xs text-muted-foreground mt-1">
-                day streak
-              </p>
+              <p className="text-xs text-muted-foreground mt-1">day streak</p>
             </div>
           </div>
 
@@ -470,7 +472,7 @@ export default async function SoloTracePage() {
           {analytics.attendance?.gigs_by_month?.length > 0 && (
             <div className="mb-8">
               <p className="text-xs text-muted-foreground uppercase tracking-widest mb-4">
-                Gigs by Month
+                Sessions by Month
               </p>
               <GigsByMonthChart data={analytics.attendance.gigs_by_month} />
             </div>
@@ -481,12 +483,12 @@ export default async function SoloTracePage() {
             <div className="mb-8">
               <div className="flex items-baseline justify-between mb-4">
                 <p className="text-xs text-muted-foreground uppercase tracking-widest">
-                  Gigs by Day
+                  Sessions by Day
                 </p>
                 {analytics.attendance.busiest_week && (
                   <p className="text-xs text-muted-foreground">
                     busiest week: {analytics.attendance.busiest_week.week_of} ·{" "}
-                    {analytics.attendance.busiest_week.count} gigs
+                    {analytics.attendance.busiest_week.count} sessions
                   </p>
                 )}
               </div>

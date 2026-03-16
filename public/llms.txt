@@ -2,7 +2,7 @@
 
 > Full-Stack Software Engineer, CTO & Founding Engineer, Jazz Trombonist. Based in New York City.
 
-Benny Conn is a software engineer and founder specializing in backend systems, AI-powered platforms, and full-stack product development. He is currently CTO and Founding Engineer at Trackyard, a music licensing platform for film and television. He is also a jazz trombonist.
+Benny Conn is a software engineer and founder specializing in backend systems, AI-powered platforms, and full-stack product development. He is formerly CTO and Founding Engineer at Trackyard, a music licensing platform for film and television. He is also a jazz trombonist.
 
 ## About
 

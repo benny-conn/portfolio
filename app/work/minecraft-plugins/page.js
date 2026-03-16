@@ -16,19 +16,25 @@ const PLUGINS = [
     name: "Bundle",
     lang: "Kotlin",
     desc: "A package manager for Minecraft plugins, providing a central repository and easy install and update workflow for server administrators.",
-    github: null,
+    github: "https://github.com/benny-conn/bundle",
   },
   {
     name: "TownyMenu",
     lang: "Java",
     desc: "A visual admin interface for the Towny plugin, replacing a wall of typed commands with a navigable GUI. Made server administration actually usable.",
-    github: null,
+    github: "https://github.com/benny-conn/TownyMenu",
   },
   {
     name: "Trader",
     lang: "Java",
     desc: "A safe peer-to-peer item trading system between players, eliminating scams by holding both sides in escrow until both confirm.",
-    github: null,
+    github: "https://github.com/benny-conn/Trader",
+  },
+  {
+    name: "Custom Warps",
+    lang: "Java",
+    desc: "A custom warp system that allows players to create and manage their own warps, with a GUI interface.",
+    github: "https://github.com/benny-conn/CustomWarps",
   },
 ]
 
@@ -49,10 +55,10 @@ export default function MinecraftPluginsPage() {
       <h1 className="text-4xl font-bold mb-6">Minecraft Plugins</h1>
 
       <p className="text-base text-muted-foreground leading-relaxed mb-12">
-        During COVID I wanted to run a Minecraft server to stay connected with friends.
-        They had ideas for changes and additions, so I decided to teach myself how to code
-        to build them. One thing led to another and I was writing Minecraft plugins in
-        Kotlin, because Java kind of sucks.
+        During COVID I wanted to run a Minecraft server to stay connected with
+        friends. They had ideas for changes and additions, so I decided to teach
+        myself how to code to build them. One thing led to another and I was
+        writing Minecraft plugins in Kotlin, because Java kind of sucks.
       </p>
 
       {/* Stats */}
@@ -113,14 +119,32 @@ export default function MinecraftPluginsPage() {
         </p>
         <div className="space-y-2">
           {[
-            ["COVID, 2020", "Wanted to run a Minecraft server to stay connected with friends stuck at home."],
-            ["Friends had ideas", "They wanted custom mechanics, land claiming, player economies. Things that didn't exist yet."],
-            ["Taught myself to code", "Dove into Java, then Kotlin to build what they asked for. Shipped Civilizations first."],
-            ["5,500 downloads later", "The plugins found an audience on Spigot and spread across public and private servers worldwide."],
+            [
+              "COVID, 2020",
+              "Wanted to run a Minecraft server to stay connected with friends stuck at home.",
+            ],
+            [
+              "Friends had ideas",
+              "They wanted custom mechanics, land claiming, player economies. Things that didn't exist yet.",
+            ],
+            [
+              "Taught myself to code",
+              "Dove into Java, then Kotlin to build what they asked for. Shipped Civilizations first.",
+            ],
+            [
+              "5,500 downloads later",
+              "The plugins found an audience on Spigot and spread across public and private servers worldwide.",
+            ],
           ].map(([step, desc]) => (
-            <div key={step} className="flex gap-4 border border-border/30 rounded-sm px-4 py-3">
-              <span className="text-xs text-brand shrink-0 mt-0.5 w-32">{step}</span>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+            <div
+              key={step}
+              className="flex gap-4 border border-border/30 rounded-sm px-4 py-3">
+              <span className="text-xs text-brand shrink-0 mt-0.5 w-32">
+                {step}
+              </span>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                {desc}
+              </p>
             </div>
           ))}
         </div>
