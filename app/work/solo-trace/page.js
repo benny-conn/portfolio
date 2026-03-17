@@ -358,9 +358,12 @@ export default async function SoloTracePage() {
               return (
                 <div className="mb-8">
                   <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3">
-                    Longest Solo
+                    Best Match
+                    {latest.longestClip.AudioHitRatio
+                      ? ` — ${(latest.longestClip.AudioHitRatio * 100).toFixed(0)}% audio match`
+                      : ""}
                     {latest.longestClip.Duration
-                      ? ` — ${formatDuration(latest.longestClip.Duration)}`
+                      ? ` · ${formatDuration(latest.longestClip.Duration)}`
                       : ""}
                     {a?.note_count ? ` · ${a.note_count} notes` : ""}
                   </p>
