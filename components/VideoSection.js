@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { Play, Pause } from "lucide-react"
 
 const VIDEOS = [
+  { title: "Confirmation", file: "8. confirmation.mov" },
   { title: "I'll Remember April", file: "1. i'll remember april.mov" },
   { title: "If I Were a Bell", file: "5. if i were a bell.mov" },
   { title: "Rhythm Changes", file: "4. rhythm changes.mov" },
