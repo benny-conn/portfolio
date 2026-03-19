@@ -76,10 +76,15 @@ export default async function Home() {
   const featured = projects.filter(p => p.featured)
   const other = projects.filter(p => !p.featured && !p.openSource)
   const soloTraceProject = projects.find(p => p.slug === "solo-trace")
+  const brandonBotProject = projects.find(p => p.slug === "brandon-bot")
 
   return (
     <main>
-      <HeroSection githubStats={githubStats} weather={weather} soloTraceData={soloTraceData} />
+      <HeroSection
+        githubStats={githubStats}
+        weather={weather}
+        soloTraceData={soloTraceData}
+      />
 
       <section id="work" className="max-w-2xl mx-auto px-6 pb-32">
         <p className="text-xs text-muted-foreground uppercase tracking-widest mb-8">
@@ -110,6 +115,11 @@ export default async function Home() {
         {soloTraceProject && (
           <div className="mb-3">
             <ProjectCard project={soloTraceProject} />
+          </div>
+        )}
+        {brandonBotProject && (
+          <div className="mb-3">
+            <ProjectCard project={brandonBotProject} />
           </div>
         )}
         <a
