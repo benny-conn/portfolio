@@ -460,7 +460,7 @@ export default function HeroSection({ githubStats, weather, soloTraceData }) {
           Trackyard
         </a>
         , building music licensing infrastructure for film and TV. Previously
-        Backend Software Engineer II at Gallery.
+        Backend Lead at Gallery Labs.
       </p>
 
       <SoloTraceWidget data={soloTraceData} />
