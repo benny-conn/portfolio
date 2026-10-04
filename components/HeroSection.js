@@ -113,9 +113,6 @@ export default function HeroSection({ children }) {
             >
               Runbook Aviation
             </a>
-            <Link className="bc-project" href="/work/solo-trace">
-              Solo Trace
-            </Link>
             <a className="bc-project" href="#work">
               All projects
             </a>
