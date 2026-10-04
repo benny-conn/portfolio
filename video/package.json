@@ -1,0 +1,20 @@
+{
+  "name": "tour-ops-demo-video",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Motion demo video for the tour-ops AI assistant service",
+  "scripts": {
+    "studio": "remotion studio src/index.jsx",
+    "render": "remotion render src/index.jsx TourOpsDemo out/tour-ops-demo-raw.mp4 --crf=18 --audio-bitrate=192k",
+    "finalize": "./scripts/finalize.sh",
+    "still": "remotion still src/index.jsx TourOpsDemoSilent out/still.png"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.532",
+    "@remotion/media-utils": "^4.0.532",
+    "@remotion/transitions": "^4.0.532",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "^4.0.532"
+  }
+}

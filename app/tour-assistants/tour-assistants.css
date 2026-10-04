@@ -1,0 +1,868 @@
+/* /tour-assistants — keeps the site's black + #ffdd00 identity. The one loud element is the
+   pair of tour laminates in the pricing section; everything else stays quiet. */
+.ta {
+  --ta-bg: #0a0a0a;
+  --ta-ink: #fafafa;
+  --ta-soft: #c9c8c2;
+  --ta-muted: #8f8e88;
+  --ta-line: #262626;
+  --ta-field: #141414;
+  --ta-yellow: #ffdd00;
+  --ta-paper: #f3f2ec;
+  --ta-blue: #0a84ff;
+  --ta-red: #ff5247;
+  --ta-navy-a: #23457d;
+  --ta-navy-b: #0f182c;
+  background: var(--ta-bg);
+  color: var(--ta-ink);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-bottom: 8rem;
+  overflow-x: clip;
+}
+
+/* text column lines up with the nav (max-w-4xl + px-6) */
+.ta-wrap {
+  width: min(100%, 944px);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+.ta-wrap--wide {
+  width: min(100%, 1248px);
+}
+
+.ta > * + * {
+  margin-top: clamp(5rem, 11vw, 9rem);
+}
+
+.ta h2 {
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  line-height: 1.02;
+  margin-bottom: 1.25rem;
+  max-width: 18ch;
+}
+
+/* hero */
+.ta-hero {
+  padding-top: clamp(8rem, 16vw, 11rem);
+}
+.ta-title {
+  font-size: clamp(2.9rem, 8.2vw, 6.25rem);
+  line-height: 0.95;
+  max-width: 12.5ch;
+}
+.ta-lede {
+  margin-top: 1.75rem;
+  max-width: 34em;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  line-height: 1.5;
+  color: var(--ta-soft);
+}
+.ta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 2.25rem;
+}
+
+.ta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1px solid #3a3a3a;
+  color: var(--ta-ink);
+  font-weight: 600;
+  font-size: 16px;
+  transition:
+    border-color 150ms,
+    background-color 150ms,
+    transform 150ms;
+}
+.ta-btn:hover {
+  border-color: var(--ta-yellow);
+}
+.ta-btn--primary {
+  background: var(--ta-yellow);
+  border-color: var(--ta-yellow);
+  color: #0a0a0a;
+}
+.ta-btn--primary:hover {
+  background: #ffe633;
+}
+.ta-btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* demo video */
+.ta-demo {
+  margin-top: clamp(3.5rem, 7vw, 5rem);
+}
+.ta-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--ta-line);
+  background: #000;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
+}
+.ta-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ta-video-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  padding: clamp(18px, 3vw, 32px);
+  background: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.78));
+  color: var(--ta-ink);
+  font-size: clamp(16px, 1.6vw, 19px);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.ta-video-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(56px, 6vw, 76px);
+  height: clamp(56px, 6vw, 76px);
+  border-radius: 50%;
+  background: var(--ta-yellow);
+  color: #0a0a0a;
+  padding-left: 4px;
+  box-shadow: 0 0 40px rgba(255, 221, 0, 0.35);
+  transition: transform 150ms;
+  flex-shrink: 0;
+}
+.ta-video-play:hover .ta-video-icon {
+  transform: scale(1.06);
+}
+.ta-video-play > span:nth-child(2) {
+  padding-bottom: clamp(14px, 1.6vw, 22px);
+}
+.ta-video-length {
+  margin-left: auto;
+  padding-bottom: clamp(14px, 1.6vw, 22px);
+  color: var(--ta-soft);
+  font-variant-numeric: tabular-nums;
+}
+.ta-video-play:focus-visible {
+  outline-offset: -6px;
+}
+
+/* text thread */
+.ta-split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 5fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+.ta-split-copy p {
+  color: var(--ta-soft);
+  max-width: 31em;
+}
+.ta-split-copy p + p {
+  margin-top: 1rem;
+}
+.ta-thread {
+  justify-self: end;
+  width: min(100%, 440px);
+  background: #000;
+  border: 1px solid var(--ta-line);
+  border-radius: 30px;
+  overflow: hidden;
+  padding-bottom: 18px;
+}
+.ta-thread-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 20px 12px;
+  background: #121214;
+  border-bottom: 1px solid #1f1f22;
+  font-size: 14px;
+  font-weight: 700;
+}
+.ta-dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #fff8b8 0%, var(--ta-yellow) 42%, #d9b300 100%);
+  box-shadow: 0 0 22px rgba(255, 221, 0, 0.4);
+}
+.ta-thread-body {
+  list-style: none;
+  margin: 0;
+  padding: 6px 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ta-thread-time {
+  text-align: center;
+  color: var(--ta-muted);
+  font-size: 12.5px;
+  margin: 12px 0 2px;
+}
+.ta-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.ta-msg p {
+  max-width: 86%;
+  padding: 10px 15px;
+  border-radius: 20px;
+  background: #262628;
+  color: #f2f2f2;
+  font-size: 15.5px;
+  line-height: 1.42;
+}
+.ta-msg--flag p::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--ta-red);
+  vertical-align: 1px;
+}
+.ta-msg--you {
+  align-items: flex-end;
+}
+.ta-msg--you p {
+  background: var(--ta-blue);
+  color: #fff;
+}
+.ta-replies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  align-self: stretch;
+}
+.ta-replies span {
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid #3a3a3f;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ta-soft);
+}
+.ta-replies .is-picked {
+  background: var(--ta-blue);
+  border-color: var(--ta-blue);
+  color: #fff;
+}
+.ta-thread figcaption {
+  margin-top: 16px;
+  text-align: center;
+  color: var(--ta-muted);
+  font-size: 13px;
+}
+
+/* the three layers */
+.ta-layers {
+  margin-top: 2.5rem;
+  display: grid;
+}
+.ta-layer {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 2rem;
+  padding: 30px 34px;
+  align-items: start;
+}
+.ta-layer p {
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 34em;
+}
+.ta-layer-name {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-size: 30px;
+  line-height: 1.05;
+}
+.ta-layer-name span {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-body), Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  opacity: 0.65;
+}
+.ta-layer--you {
+  border: 1px solid #d9d9d4;
+  border-bottom: 0;
+  border-radius: 22px 22px 0 0;
+}
+.ta-layer--you p {
+  color: var(--ta-soft);
+}
+.ta-layer--assistant {
+  background: var(--ta-yellow);
+  color: #0a0a0a;
+  box-shadow: 0 0 80px rgba(255, 221, 0, 0.16);
+  position: relative;
+  z-index: 1;
+}
+.ta-layer--assistant ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: 2rem;
+}
+.ta-layer--assistant li {
+  break-inside: avoid;
+  position: relative;
+  padding: 5px 0 5px 22px;
+  font-size: 16.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.ta-layer--assistant li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.85em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0a0a0a;
+}
+.ta-layer--plan {
+  background: linear-gradient(120deg, var(--ta-navy-a), var(--ta-navy-b) 72%);
+  color: #fff;
+  border-radius: 0 0 22px 22px;
+}
+.ta-layer--plan p {
+  color: #d3dae8;
+}
+
+/* setup, laid out like a run of show */
+.ta-steps {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+}
+.ta-steps li {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 2rem;
+  padding: 30px 0;
+  border-top: 1px solid var(--ta-line);
+}
+.ta-steps li:last-child {
+  border-bottom: 1px solid var(--ta-line);
+}
+.ta-step-when {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ta-muted);
+  font-variant-numeric: tabular-nums;
+  padding-top: 4px;
+}
+.ta-steps h3 {
+  font-size: 28px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.ta-steps p {
+  color: var(--ta-soft);
+  max-width: 38em;
+}
+
+/* pricing: two laminates on lanyards */
+.ta-pricing {
+  padding-block: clamp(5rem, 9vw, 7rem);
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255, 221, 0, 0.09), transparent 70%),
+    linear-gradient(180deg, #0d0d0c, var(--ta-bg));
+  border-block: 1px solid #1a1a1a;
+}
+.ta-pricing-lede {
+  color: var(--ta-soft);
+  max-width: 36em;
+}
+.ta-passes {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(2rem, 7vw, 6rem);
+  padding: 150px 24px 0;
+  margin-top: 1rem;
+}
+.ta-pass {
+  position: relative;
+  width: 360px;
+  flex-shrink: 0;
+  transform-origin: 50% -150px;
+}
+.ta-pass--1 {
+  transform: rotate(-2.5deg);
+}
+.ta-pass--2 {
+  transform: rotate(2deg);
+  transform-origin: 50% -196px;
+  margin-top: 46px;
+}
+.ta-pass-strap {
+  position: absolute;
+  left: 50%;
+  top: -150px;
+  width: 30px;
+  height: 160px;
+  margin-left: -15px;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0 2px, transparent 2px 5px), var(--ta-yellow);
+  box-shadow: inset 3px 0 0 rgba(0, 0, 0, 0.12), inset -3px 0 0 rgba(0, 0, 0, 0.12);
+}
+.ta-pass--2 .ta-pass-strap {
+  top: -196px;
+  height: 206px;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 5px), #151515;
+  box-shadow: inset 3px 0 0 var(--ta-yellow), inset -3px 0 0 var(--ta-yellow);
+}
+.ta-pass-clip {
+  position: absolute;
+  left: 50%;
+  top: 2px;
+  width: 42px;
+  height: 22px;
+  margin-left: -21px;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #e2e2e2, #8a8a8a);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.ta-pass-card {
+  position: relative;
+  margin-top: 20px;
+  padding: 36px 28px 22px;
+  border-radius: 18px;
+  background: var(--ta-paper);
+  color: #0a0a0a;
+  box-shadow:
+    0 34px 70px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+  overflow: hidden;
+}
+.ta-pass-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(118deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 72%, rgba(255, 255, 255, 0.22) 100%);
+  pointer-events: none;
+}
+.ta-pass-slot {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 66px;
+  height: 11px;
+  margin-left: -33px;
+  border-radius: 6px;
+  background: #0d0d0c;
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.8);
+}
+.ta-pass-access {
+  margin: 4px -28px 20px;
+  padding: 10px 28px 8px;
+  background: #0a0a0a;
+  color: var(--ta-yellow);
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+.ta-pass--2 .ta-pass-access {
+  background: var(--ta-yellow);
+  color: #0a0a0a;
+}
+.ta-pass-card h3 {
+  font-size: 34px;
+  line-height: 1;
+  color: #0a0a0a;
+}
+.ta-pass-price {
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #4a4a46;
+}
+.ta-pass-card ul {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+.ta-pass-card li {
+  position: relative;
+  padding: 8px 0 8px 26px;
+  border-top: 1px solid rgba(0, 0, 0, 0.09);
+  font-size: 15px;
+  line-height: 1.4;
+}
+.ta-pass-card li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 12px;
+  width: 12px;
+  height: 7px;
+  border-left: 2.5px solid #0a0a0a;
+  border-bottom: 2.5px solid #0a0a0a;
+  transform: rotate(-45deg);
+}
+.ta-pass-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid #0a0a0a;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: right;
+}
+.ta-pass-code {
+  width: 118px;
+  height: 32px;
+  flex-shrink: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    #0a0a0a 0 2px,
+    transparent 2px 4px,
+    #0a0a0a 4px 7px,
+    transparent 7px 8px,
+    #0a0a0a 8px 9px,
+    transparent 9px 12px,
+    #0a0a0a 12px 13px,
+    transparent 13px 15px
+  );
+}
+.ta-pricing-cta {
+  margin-top: 3.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ta-passes:not(.is-hung) .ta-pass--1 {
+    transform: rotate(-11deg);
+  }
+  .ta-passes:not(.is-hung) .ta-pass--2 {
+    transform: rotate(10deg);
+  }
+  .ta-passes.is-hung .ta-pass--1 {
+    animation: ta-swing-1 1.9s cubic-bezier(0.3, 0.1, 0.3, 1) both;
+  }
+  .ta-passes.is-hung .ta-pass--2 {
+    animation: ta-swing-2 2.1s 0.12s cubic-bezier(0.3, 0.1, 0.3, 1) both;
+  }
+}
+@keyframes ta-swing-1 {
+  0% { transform: rotate(-11deg); }
+  28% { transform: rotate(5deg); }
+  52% { transform: rotate(-6deg); }
+  74% { transform: rotate(-0.5deg); }
+  100% { transform: rotate(-2.5deg); }
+}
+@keyframes ta-swing-2 {
+  0% { transform: rotate(10deg); }
+  30% { transform: rotate(-5deg); }
+  55% { transform: rotate(5deg); }
+  76% { transform: rotate(0.8deg); }
+  100% { transform: rotate(2deg); }
+}
+
+/* questions */
+.ta-faq {
+  margin-top: 2rem;
+  max-width: 50rem;
+}
+.ta-faq details {
+  border-top: 1px solid var(--ta-line);
+}
+.ta-faq details:last-child {
+  border-bottom: 1px solid var(--ta-line);
+}
+.ta-faq summary {
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 48px 22px 0;
+  font-size: 19px;
+  font-weight: 600;
+}
+.ta-faq summary::-webkit-details-marker {
+  display: none;
+}
+.ta-faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-52%);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--ta-muted);
+}
+.ta-faq details[open] summary::after {
+  content: "–";
+}
+.ta-faq details p {
+  padding-bottom: 24px;
+  color: var(--ta-soft);
+  max-width: 40em;
+}
+.ta-faq summary:focus-visible {
+  outline-offset: 2px;
+}
+
+/* quote request */
+.ta-quote {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+  scroll-margin-top: 5rem;
+}
+.ta-me {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+.ta-me img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.ta-me p {
+  color: var(--ta-soft);
+  max-width: 26em;
+}
+
+.ta-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 18px;
+}
+.ta-field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.ta-field--wide {
+  grid-column: 1 / -1;
+}
+.ta-field label,
+.ta-field legend {
+  margin-bottom: 8px;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+.ta-field label span,
+.ta-field legend span {
+  margin-left: 6px;
+  font-weight: 400;
+  color: var(--ta-muted);
+}
+.ta-field input,
+.ta-field select,
+.ta-field textarea {
+  width: 100%;
+  background: var(--ta-field);
+  border: 1px solid #2c2c2c;
+  border-radius: 12px;
+  padding: 13px 14px;
+  color: var(--ta-ink);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  transition: border-color 150ms;
+}
+.ta-field textarea {
+  resize: vertical;
+  min-height: 132px;
+}
+.ta-field select {
+  appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23a3a3a3' stroke-width='1.6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+}
+.ta-field input::placeholder,
+.ta-field textarea::placeholder {
+  color: #5f5e5a;
+}
+.ta-field input:focus,
+.ta-field select:focus,
+.ta-field textarea:focus {
+  border-color: var(--ta-yellow);
+  outline: none;
+}
+.ta-field input:focus-visible,
+.ta-field select:focus-visible,
+.ta-field textarea:focus-visible {
+  outline: 2px solid var(--ta-yellow);
+  outline-offset: 2px;
+}
+.ta-tools {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.ta-tools > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ta-field .ta-chip {
+  position: relative;
+  margin: 0;
+  cursor: pointer;
+}
+.ta-chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.ta-field .ta-chip span {
+  display: inline-block;
+  margin: 0;
+  padding: 8px 15px;
+  border-radius: 999px;
+  border: 1px solid #2f2f2f;
+  color: var(--ta-soft);
+  font-size: 14.5px;
+  font-weight: 600;
+  transition:
+    border-color 150ms,
+    color 150ms,
+    background-color 150ms;
+}
+.ta-field .ta-chip input:checked + span {
+  border-color: var(--ta-yellow);
+  background: rgba(255, 221, 0, 0.09);
+  color: var(--ta-yellow);
+}
+.ta-chip input:focus-visible + span {
+  outline: 2px solid var(--ta-yellow);
+  outline-offset: 2px;
+}
+.ta-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 4px;
+}
+.ta-form-error {
+  color: #ff8a80;
+  font-size: 15px;
+  flex-basis: 100%;
+}
+.ta-form-error a {
+  text-decoration: underline;
+}
+.ta-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.ta-form--sent {
+  display: block;
+  padding: 32px;
+  border: 1px solid var(--ta-line);
+  border-radius: 22px;
+  background: var(--ta-field);
+}
+.ta-form--sent h3 {
+  font-size: 34px;
+  line-height: 1.05;
+  margin-bottom: 10px;
+  color: var(--ta-yellow);
+}
+.ta-form--sent p {
+  color: var(--ta-soft);
+}
+
+@media (max-width: 880px) {
+  .ta-split,
+  .ta-quote {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ta-thread {
+    justify-self: start;
+  }
+  .ta-layer {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+    padding: 24px 22px;
+  }
+  .ta-layer--assistant ul {
+    columns: 1;
+  }
+  .ta-steps li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem;
+  }
+  .ta-passes {
+    flex-direction: column;
+    align-items: center;
+    gap: 210px;
+    padding-top: 150px;
+  }
+  .ta-pass {
+    width: min(100%, 360px);
+  }
+  .ta-pass--2 {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .ta-wrap {
+    padding-inline: 16px;
+  }
+  .ta-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ta-video-length {
+    display: none;
+  }
+  .ta-pass-access {
+    font-size: 30px;
+  }
+  .ta-passes {
+    padding-inline: 16px;
+  }
+  .ta-pass {
+    width: min(100%, 318px);
+  }
+}
