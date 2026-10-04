@@ -133,9 +133,11 @@ export function SearchDemo() {
         }, 600)
       }
     } else if (phase === "showing") {
-      id = setTimeout(() => setPhase("clearing"), 3200)
+      id = setTimeout(() => {
+        setShowResults(false)
+        setPhase("clearing")
+      }, 3200)
     } else if (phase === "clearing") {
-      setShowResults(false)
       id = setTimeout(() => {
         setQueryText("")
         setResults([])

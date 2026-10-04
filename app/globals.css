@@ -45,9 +45,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
-  --font-sans:
-    var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --font-sans: var(--font-body), Arial, sans-serif;
 }
 
 /*
@@ -139,85 +137,28 @@
 }
 
 body {
-  font-family: var(--font-mono);
+  font-family: var(--font-body), Arial, sans-serif;
 }
 
-@keyframes rain-fall {
-  0% {
-    transform: translateY(-24px) translateX(0px);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.22;
-  }
-  85% {
-    opacity: 0.22;
-  }
-  100% {
-    transform: translateY(260px) translateX(-18px);
-    opacity: 0;
-  }
+h1,
+h2,
+h3,
+.site-logo {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
 }
 
-@keyframes snow-fall {
-  0% {
-    transform: translateY(0px) translateX(0px) rotate(0deg);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.45;
-  }
-  85% {
-    opacity: 0.45;
-  }
-  100% {
-    transform: translateY(220px) translateX(12px) rotate(180deg);
-    opacity: 0;
-  }
+:focus-visible {
+  outline: 2px solid #ffdd00;
+  outline-offset: 5px;
 }
 
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 0.15;
-  }
-  50% {
-    opacity: 0.7;
-  }
+html {
+  scroll-padding-top: 6rem;
 }
-
-@keyframes cloud-drift {
-  0%,
-  100% {
-    transform: translateX(0px);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateX(10px);
-    opacity: 1;
-  }
-}
-
-@keyframes fog-drift {
-  0%,
-  100% {
-    transform: translateX(0px);
-    opacity: 0.4;
-  }
-  50% {
-    transform: translateX(-12px);
-    opacity: 0.7;
-  }
-}
-
-@keyframes fog-float {
-  0%,
-  100% {
-    transform: translateY(0px);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translateY(-6px);
-    opacity: 1;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }

@@ -1,13 +1,21 @@
-import { JetBrains_Mono } from "next/font/google"
+import localFont from "next/font/local"
 import "./globals.css"
 import { AudioProvider, FixedAudioPlayer } from "@/components/AudioPlayer"
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/next"
 import Nav from "@/components/Nav"
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
+const dmSans = localFont({
+  src: "./fonts/DM-Sans-Latin.woff2",
+  variable: "--font-body",
+  weight: "400 700",
+  display: "swap",
+})
+const fraunces = localFont({
+  src: "./fonts/Fraunces-Soft-800.woff2",
+  variable: "--font-display",
+  weight: "800",
+  display: "swap",
 })
 
 const SITE_URL = "https://bennyconn.com"
@@ -19,7 +27,7 @@ export const metadata = {
     template: "%s — Benny Conn",
   },
   description:
-    "Benny Conn is a Full-Stack Software Engineer, CTO & Founding Engineer at Trackyard, and Jazz Trombonist based in New York City.",
+    "Benny Conn builds software and plays jazz trombone in New York City. Now at Ambrook, also building Runbook Aviation and personal AI assistants for touring teams.",
   keywords: [
     "Benny Conn",
     "Software Engineer",
@@ -42,9 +50,9 @@ export const metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Benny Conn",
-    title: "Benny Conn — Full-Stack Engineer & CTO",
+    title: "Benny Conn — Software & Jazz Trombone",
     description:
-      "Benny Conn is a Full-Stack Software Engineer, CTO & Founding Engineer at Trackyard, and Jazz Trombonist based in New York City.",
+      "Benny Conn builds software and plays jazz trombone in New York City. Now at Ambrook, also building Runbook Aviation and personal AI assistants for touring teams.",
     images: [
       {
         url: "/happy.jpg",
@@ -56,9 +64,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Benny Conn — Full-Stack Engineer & CTO",
+    title: "Benny Conn — Software & Jazz Trombone",
     description:
-      "Benny Conn is a Full-Stack Software Engineer, CTO & Founding Engineer at Trackyard, and Jazz Trombonist based in New York City.",
+      "Benny Conn builds software and plays jazz trombone in New York City. Now at Ambrook, also building Runbook Aviation and personal AI assistants for touring teams.",
     images: ["/happy.jpg"],
   },
   alternates: {
@@ -86,11 +94,11 @@ const jsonLd = {
   name: "Benny Conn",
   url: SITE_URL,
   image: `${SITE_URL}/happy.jpg`,
-  jobTitle: "CTO & Full-Stack Software Engineer",
+  jobTitle: "Software Engineer",
   worksFor: {
     "@type": "Organization",
-    name: "Trackyard",
-    url: "https://trackyard.com",
+    name: "Ambrook",
+    url: "https://ambrook.com",
   },
   address: {
     "@type": "PostalAddress",
@@ -103,7 +111,7 @@ const jsonLd = {
     "https://linkedin.com/in/benny-conn",
   ],
   description:
-    "Full-Stack Software Engineer, CTO & Founding Engineer at Trackyard, and Jazz Trombonist based in New York City.",
+    "Software engineer at Ambrook and jazz trombonist in New York City. Also building Runbook Aviation.",
 }
 
 export default function RootLayout({ children }) {
@@ -115,7 +123,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${jetbrainsMono.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${fraunces.variable} antialiased`}>
         <AudioProvider>
           <Nav />
           {children}
