@@ -34,7 +34,6 @@ export const metadata = {
     "Full Stack Engineer",
     "Backend Engineer",
     "CTO",
-    "Trackyard",
     "Go",
     "Golang",
     "React",

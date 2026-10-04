@@ -2,7 +2,7 @@
 
 > Software engineer at Ambrook and jazz trombonist. Based in New York City.
 
-Benny Conn is a software engineer and founder specializing in backend systems, AI-powered platforms, and full-stack product development. He is formerly CTO and Founding Engineer at Trackyard, a music licensing platform for film and television. He is also a jazz trombonist.
+Benny Conn is a software engineer and founder specializing in backend systems, AI-powered platforms, and full-stack product development. He works at Ambrook and is also building Runbook Aviation. He is also a jazz trombonist.
 
 ## About
 
@@ -18,9 +18,6 @@ Benny Conn is a software engineer and founder specializing in backend systems, A
 ### Runbook Aviation (runbookaviation.com)
 An aviation project Benny is building.
 
-
-### Trackyard (trackyard.com)
-AI-powered music licensing platform for film and television. As CTO and founding engineer, architected the core AI search infrastructure, automated media pipelines, and social content tools that became the company's primary revenue driver.
 
 ### Gallery (gallery.so)
 Social platform for sharing and discovering art. Built and maintained backend infrastructure handling millions of media assets, real-time notifications, and third-party data sync using Go, GraphQL, GCP.

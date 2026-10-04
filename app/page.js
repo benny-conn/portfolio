@@ -73,27 +73,6 @@ export default function Home() {
             <ProjectCard project={brandonBotProject} />
           </div>
         )}
-        <a
-          href="https://clawhub.ai/benny-conn/trackyard"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center justify-between border border-border rounded-none p-6 hover:border-brand/60 transition-colors duration-200"
-        >
-          <div>
-            <p className="text-xs text-muted-foreground mb-2">
-              Published OpenClaw Skill
-            </p>
-            <h3 className="text-2xl font-semibold mb-1">trackyard</h3>
-            <p className="text-sm text-muted-foreground">
-              AI music search across the Trackyard catalog, published on
-              OpenClaw.
-            </p>
-          </div>
-          <ArrowUpRight
-            size={14}
-            className="text-muted-foreground group-hover:text-brand transition-colors ml-6 flex-shrink-0"
-          />
-        </a>
       </section>
     </HeroSection>
   )

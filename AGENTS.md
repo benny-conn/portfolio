@@ -4,6 +4,7 @@ This is Benny Conn’s personal portfolio: software projects, jazz recordings, a
 
 ## Stack and commands
 
+- Node.js 24 LTS (`.nvmrc` and `package.json` engines). The engines field also selects Node 24 for Vercel builds.
 - Next.js 16 App Router, React 19, JavaScript/JSX (no TypeScript migration needed).
 - Tailwind CSS 4, Radix/shadcn components, Lucide icons, Vercel Analytics.
 - Use npm and commit `package-lock.json` when dependencies change.
