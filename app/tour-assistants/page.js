@@ -7,12 +7,12 @@ import InquiryForm from "@/components/tour-assistants/InquiryForm"
 export const metadata = {
   title: "Tour assistants",
   description:
-    "A personal AI assistant set up for your tour. It reads the advance, keeps Master Tour current, chases what's missing and asks you about anything that needs a decision. Setup in about a week, quoted per tour.",
+    "A personal AI assistant set up for your tour. It reads the advance, keeps Master Tour current, chases what's missing and asks you about anything that needs a decision. One-time setup in about a week.",
   alternates: { canonical: "/tour-assistants" },
   openGraph: {
     title: "A personal AI assistant, set up for your tour",
     description:
-      "Benny Conn sets up an AI assistant around the way your touring team already works. Setup in about a week, quoted per tour.",
+      "Benny Conn sets up an AI assistant around the way your touring team already works. One-time setup in about a week.",
     images: [{ url: "/tour-assistants/demo-poster.jpg", width: 1600, height: 900 }],
   },
 }
@@ -94,7 +94,7 @@ const FAQ = [
   },
   {
     q: "How is it priced?",
-    a: "Setup and the pilot are a one-time quote; ongoing support is a monthly quote. Both depend on the number of shows, the size of your team, and the tools we connect.",
+    a: "Setup is a one-time fee for you and your team, not a charge per tour. I quote it after the intro call based on how you work and the tools we connect. Ongoing support is a separate monthly quote.",
   },
 ]
 
@@ -211,10 +211,10 @@ export default function TourAssistantsPage() {
 
       <section className="ta-pricing" aria-labelledby="ta-pricing-title">
         <div className="ta-wrap">
-          <h2 id="ta-pricing-title">Quoted per tour.</h2>
+          <h2 id="ta-pricing-title">Set up once, for you.</h2>
           <p className="ta-pricing-lede">
-            Every tour runs differently, so I quote after the intro call based on the number of shows, the size of your
-            team, and the tools we connect. Here&apos;s what each part includes.
+            Setup is a one-time fee for you and your team, not a charge per tour. I quote it after the intro call based on
+            how you work and the tools we connect. Here&apos;s what each part includes.
           </p>
         </div>
         <Laminates />

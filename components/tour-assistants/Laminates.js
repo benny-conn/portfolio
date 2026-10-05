@@ -6,11 +6,11 @@ const PASSES = [
   {
     access: "ALL ACCESS",
     title: "Setup + pilot",
-    price: "One-time, quoted per tour",
+    price: "One-time setup, quoted",
     items: [
       "Intro call and a walkthrough of how your team works",
       "About one week of setup",
-      "An assistant configured for your tour",
+      "An assistant configured for you and your team",
       "Connected to Master Tour, email, Sheets, Docs, Slack and the rest of your stack",
       "Approval rules you choose",
       "Testing on your real advance",
@@ -21,7 +21,7 @@ const PASSES = [
   {
     access: "CREW",
     title: "Ongoing support",
-    price: "Monthly, quoted per tour",
+    price: "Monthly, quoted",
     items: [
       "Monitoring and fixes",
       "Revisions as your process changes",
