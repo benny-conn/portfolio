@@ -37,8 +37,7 @@ function ProjectCard({ project }) {
 
 export default function Home() {
   const featured = projects.filter((p) => p.featured)
-  const other = projects.filter((p) => !p.featured && !p.openSource)
-  const brandonBotProject = projects.find((p) => p.slug === "brandon-bot")
+  const other = projects.filter((p) => !p.featured)
 
   return (
     <HeroSection>
@@ -59,13 +58,6 @@ export default function Home() {
               ))}
             </div>
           </>
-        )}
-
-        <h2 className="text-3xl mb-6">Open source</h2>
-        {brandonBotProject && (
-          <div className="mb-3">
-            <ProjectCard project={brandonBotProject} />
-          </div>
         )}
       </section>
     </HeroSection>
