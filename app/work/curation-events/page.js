@@ -1,182 +1,223 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowUpRight, FileText } from "lucide-react"
+import { events } from "@/lib/events"
+import { EventStats } from "@/components/EventPortfolio"
+import EventFilm from "@/components/EventFilm"
+import ContactSection from "@/components/ContactSection"
 
 export const metadata = {
-  title: "Curation Events — Benny Conn",
+  title: "Events & Community",
+  description:
+    "Benny Conn's event production and community programming: Spotify × Aetna, a full-capacity Williamsburg launch, monthly jazz at Ambrook, and Chobani event concepts.",
+  alternates: { canonical: "/work/curation-events" },
 }
-
-const LOGOS = [
-  { src: "/images/curation/logos/spotify.png", alt: "Spotify", w: 100 },
-  { src: "/images/curation/logos/aetna.png", alt: "Aetna", w: 80 },
-  { src: "/images/curation/logos/niva-trans.png", alt: "NIVA", w: 60 },
-  { src: "/images/curation/logos/A2IM-trans.png", alt: "A2IM", w: 70 },
-  {
-    src: "/images/curation/logos/interlude-trans.png",
-    alt: "Interlude",
-    w: 90,
-    invert: true,
-  },
-  { src: "/images/curation/logos/rr-trans.png", alt: "RR", w: 50 },
-]
 
 const PROPOSALS = [
   {
     title: "Chobani Town Hall",
-    sub: "New York, NY · April 2026",
-    desc: "Full event production proposal for a multi-location branded town hall tied to Chobani's World Cup involvement, featuring an inflatable tunnel entrance, live-stream to four U.S. sites, and immersive arrival experience.",
+    desc: "A multi-location town hall concept with an immersive arrival experience and a live stream connecting four U.S. sites.",
     file: "/pdfs/curation/chobani town hall x curation.pdf",
   },
   {
     title: "Chobani Wellness Day",
-    sub: "Twin Falls, ID · June 2026/2027",
-    desc: "1,000–1,500 attendee wellness festival at Twin Falls County Fairgrounds. Multi-generational programming across physical, financial, and emotional wellness pillars, including a mock farmer's market with AI nutrition receipts.",
+    desc: "A wellness festival concept at Twin Falls County Fairgrounds, with programming around physical, financial, and emotional wellness.",
     file: "/pdfs/curation/curation x chobani - final event proposal.pdf",
-  },
-  {
-    title: "Spotify Event Proposal",
-    sub: "New York & Los Angeles",
-    desc: "Experiential activation proposal for Spotify, bringing the brand to life through curated music-forward environments.",
-    file: "/pdfs/curation/spotify x curation event proposal-v2.pdf",
   },
 ]
 
 export default function CurationEventsPage() {
   return (
-    <main className="max-w-2xl mx-auto px-6 pt-32 pb-32">
-      <Link
-        href="/#work"
-        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12">
-        <ArrowLeft size={14} />
-        Work
+    <main className="event-page portfolio-width" id="main-content">
+      <Link href="/#events" className="text-link event-page-back">
+        <ArrowLeft size={15} aria-hidden="true" /> Events &amp; community
       </Link>
-
-      <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3">
-        Co-Founder & Creative Director
-      </p>
-
-      <div className="flex items-start justify-between mb-6">
-        <h1 className="text-4xl font-bold">Curation Events</h1>
+      <header className="event-page-heading">
+        <p className="eyebrow">
+          Co-founder &amp; Creative Director / Curation Events
+        </p>
+        <h1>
+          Good company.
+          <br />
+          Thoughtful production.
+        </h1>
+        <p className="event-page-lede">
+          I bring the idea, the people, and the practical details together.
+          Through Curation Events, I produce corporate gatherings and launch
+          events. At Ambrook, I’m building a recurring reason to get together
+          through live jazz.
+        </p>
         <a
           href="https://curation.events"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-muted-foreground hover:text-brand transition-colors flex items-center gap-1 mt-2 flex-shrink-0 ml-4">
-          curation.events
-          <ArrowUpRight size={13} />
+          className="text-link"
+        >
+          Visit the event studio <ArrowUpRight size={17} aria-hidden="true" />
         </a>
-      </div>
-
-      <p className="text-base text-muted-foreground leading-relaxed mb-12">
-        Co-founded a full-service experiential event studio delivering
-        large-scale corporate activations across New York and Los Angeles. We
-        handled everything from creative concept and vendor coordination to
-        on-site production and digital engagement systems for clients including
-        Spotify and Aetna.
-      </p>
-
-      {/* Photo grid */}
-      <div className="grid grid-cols-3 gap-2 mb-12">
-        <div className="col-span-2 relative aspect-[4/3] overflow-hidden rounded-sm">
-          <Image
-            src="/images/curation/background.jpg"
-            alt="Curation Events production"
-            fill
-            className="object-cover"
-          />
+      </header>
+      <figure>
+        <EventFilm className="event-page-hero" />
+        <figcaption className="event-page-caption">
+          Live music / Curation Events
+        </figcaption>
+      </figure>
+      <section
+        id="spotify"
+        className="event-story"
+        aria-labelledby="spotify-title"
+      >
+        <div className="event-story-head">
+          <div>
+            <p className="eyebrow">Delivered / New York</p>
+            <h2 id="spotify-title">{events.spotify.name}</h2>
+          </div>
+          <div>
+            <p>{events.spotify.description}</p>
+            <p className="mt-5">{events.spotify.role}</p>
+          </div>
         </div>
-        <div className="flex flex-col gap-2">
-          <div className="relative flex-1 overflow-hidden rounded-sm">
+        <EventStats stats={events.spotify.stats} />
+        <div className="event-story-gallery">
+          <div>
             <Image
-              src="/images/curation/having-fun.jpg"
-              alt="Guests at Curation event"
+              src="/images/events/spotify.webp"
+              alt="Guests exploring the Spotify and Aetna event's activity stations"
               fill
+              sizes="(max-width: 760px) 100vw, 60vw"
               className="object-cover"
             />
           </div>
-          <div className="relative flex-1 overflow-hidden rounded-sm">
+          <div>
             <Image
-              src="/images/curation/food.jpg"
-              alt="Curation event catering"
+              src="/images/events/spotify-clay.webp"
+              alt="Guests making clay pieces at the Spotify event"
               fill
+              sizes="(max-width: 760px) 100vw, 40vw"
               className="object-cover"
             />
           </div>
         </div>
-      </div>
-
-      {/* Stats */}
-      <div className="grid grid-cols-3 gap-6 py-8 border-y border-border mb-12">
-        {[
-          { value: "1,000+", label: "Attendees Served" },
-          { value: "200+", label: "Staff & Vendors" },
-          { value: "2", label: "Markets: NYC & LA" },
-        ].map(s => (
-          <div key={s.label} className="flex flex-col gap-2">
-            <span className="text-4xl font-bold text-brand">{s.value}</span>
-            <span className="text-xs text-muted-foreground uppercase tracking-widest leading-snug">
-              {s.label}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      {/* Client logos */}
-      <div className="mb-12">
-        <p className="text-xs text-muted-foreground uppercase tracking-widest mb-6">
-          Trusted By
+        <p className="mt-7 max-w-3xl">
+          The experience brought together a clay workshop, illustrated
+          portraits, surprise giveaways, and food. We also built an interactive
+          rhythm game, connecting my software work with the physical event.
         </p>
-        <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
-          {LOGOS.map(logo => (
-            <Image
-              key={logo.alt}
-              src={logo.src}
-              alt={logo.alt}
-              width={logo.w * 2}
-              height={40}
-              className={`object-contain opacity-60 hover:opacity-100 transition-opacity ${logo.invert ? "invert" : ""}`}
-              style={{ width: logo.w, height: "auto" }}
-            />
-          ))}
+        <div className="flex flex-wrap gap-x-8 gap-y-2 mt-5">
+          <a
+            href={events.spotify.source}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-link"
+          >
+            The full event story <ArrowUpRight size={17} aria-hidden="true" />
+          </a>
+          <a
+            href="/pdfs/curation/spotify x curation event proposal-v2.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-link"
+          >
+            View the proposal <FileText size={16} aria-hidden="true" />
+          </a>
         </div>
-      </div>
-
-      {/* Proposals */}
-      <div>
-        <p className="text-xs text-muted-foreground uppercase tracking-widest mb-4">
-          Event Proposals
-        </p>
-        <div className="space-y-3">
-          {PROPOSALS.map(p => (
+      </section>
+      <section
+        id="ambrook-jazz"
+        className="event-story event-story-simple"
+        aria-labelledby="ambrook-title"
+      >
+        <div>
+          <p className="eyebrow">Ongoing / Monthly programming</p>
+          <h2 id="ambrook-title">{events.ambrook.name}</h2>
+        </div>
+        <div>
+          <p>{events.ambrook.description}</p>
+          <EventStats stats={events.ambrook.stats} />
+          <figure className="event-story-photo ambrook-photo">
+            <Image
+              src="/images/events/ambrook-jazz.webp"
+              alt="Guests and musicians at Ambrook’s first jazz night"
+              width={2000}
+              height={1500}
+              sizes="(max-width: 760px) 100vw, 50vw"
+              className="w-full h-auto"
+            />
+          </figure>
+          <Link href="/music" className="text-link mt-5">
+            Hear the music side of my work{" "}
+            <ArrowUpRight size={17} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+      <section
+        id="gig-launch"
+        className="event-story event-story-simple"
+        aria-labelledby="gig-title"
+      >
+        <div>
+          <p className="eyebrow">Delivered / Williamsburg, Brooklyn</p>
+          <h2 id="gig-title">{events.gig.name}</h2>
+        </div>
+        <div>
+          <p>{events.gig.description}</p>
+          <EventStats stats={events.gig.stats} />
+          <figure className="event-story-photo gig-photo">
+            <Image
+              src="/images/events/gig-launch.webp"
+              alt="A full room at the ticketed Gig App event in Williamsburg"
+              width={1800}
+              height={2400}
+              sizes="(max-width: 760px) 100vw, 50vw"
+              className="w-full h-auto"
+            />
+          </figure>
+          <Link href="/work/gig-app" className="text-link mt-5">
+            Explore Gig App <ArrowUpRight size={17} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+      <section
+        id="chobani"
+        className="event-story"
+        aria-labelledby="chobani-title"
+      >
+        <div className="event-story-head">
+          <div>
+            <p className="eyebrow">Concept &amp; pre-production</p>
+            <h2 id="chobani-title">{events.chobani.name}</h2>
+          </div>
+          <div>
+            <p>{events.chobani.description}</p>
+          </div>
+        </div>
+        <div className="event-proposals">
+          {PROPOSALS.map(proposal => (
             <a
-              key={p.title}
-              href={p.file}
+              key={proposal.title}
+              href={proposal.file}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-start gap-4 border border-border rounded-sm px-5 py-4 hover:border-brand/60 transition-all duration-200">
-              <FileText
-                size={16}
-                className="text-muted-foreground group-hover:text-brand transition-colors mt-0.5 shrink-0"
-              />
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2 mb-1">
-                  <p className="text-sm font-medium">{p.title}</p>
-                  <span className="text-xs text-muted-foreground shrink-0">
-                    {p.sub}
-                  </span>
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {p.desc}
-                </p>
+            >
+              <FileText size={18} aria-hidden="true" />
+              <div>
+                <h3>{proposal.title}</h3>
+                <p>{proposal.desc}</p>
               </div>
-              <ArrowUpRight
-                size={13}
-                className="text-muted-foreground group-hover:text-brand transition-colors shrink-0 mt-0.5"
-              />
+              <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           ))}
         </div>
+      </section>
+      <div className="event-page-next">
+        <Link href="/contact" className="text-link">
+          Have something in mind? <ArrowUpRight size={17} aria-hidden="true" />
+        </Link>
+        <Link href="/#software" className="text-link">
+          Explore my software work <ArrowUpRight size={17} aria-hidden="true" />
+        </Link>
       </div>
+      <ContactSection idPrefix="events-contact" />
     </main>
   )
 }

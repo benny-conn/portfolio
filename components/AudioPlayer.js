@@ -160,15 +160,17 @@ export const FixedAudioPlayer = () => {
   const isMobile = screenWidth < 768
 
   return (
-    <div className="fixed bottom-0 left-0 w-full h-16 bg-neutral-900 flex flex-row items-center justify-between px-4">
+    <div className="fixed z-[60] bottom-0 left-0 w-full h-16 bg-neutral-900 flex flex-row items-center justify-between px-4">
       <div className="flex items-center gap-2 md:gap-4">
         <button
+          aria-label="Previous recording"
           onClick={() => skipTrack(-1)}
           type="button"
           className="w-8 h-8 flex items-center justify-center hover:scale-110 transition-all duration-300">
           <SkipBack className="text-foreground" size={20} />
         </button>
         <button
+          aria-label={isPlaying ? "Pause recording" : "Play recording"}
           onClick={togglePlayPause}
           type="button"
           className="w-8 h-8 flex items-center justify-center hover:scale-110 transition-all duration-300">
@@ -179,6 +181,7 @@ export const FixedAudioPlayer = () => {
           )}
         </button>
         <button
+          aria-label="Next recording"
           onClick={() => skipTrack(1)}
           type="button"
           className="w-8 h-8 flex items-center justify-center hover:scale-110 transition-all duration-300">
@@ -191,7 +194,7 @@ export const FixedAudioPlayer = () => {
             </p>
             <div
               ref={barRef}
-              className="relative h-1 rounded-xl flex items-center bg-secondary w-[300px] md:w-[500px] cursor-pointer"
+              className="relative h-1 rounded-xl flex items-center bg-secondary w-[clamp(100px,24vw,400px)] cursor-pointer"
               onClick={e => {
                 const audio = audioRef.current
                 if (!audio || !duration) return
@@ -220,8 +223,9 @@ export const FixedAudioPlayer = () => {
           onMouseLeave={() => setIsHoveringVolume(false)}>
           <button
             type="button"
+            aria-label="Volume"
             className="w-8 h-8 flex items-center justify-center hover:scale-110 transition-all duration-300">
-            <Volume2 className="text-muted-foreground" size={24} />
+            <Volume2 aria-hidden="true" className="text-muted-foreground" size={24} />
           </button>
           {isHoveringVolume && (
             <div className="absolute bottom-8 pb-4 pt-2 px-2 rounded-t-lg">
@@ -250,6 +254,7 @@ export const FixedAudioPlayer = () => {
       </div>
       <button
         className="w-8 h-8 flex items-center justify-center hover:scale-110 transition-all duration-300"
+        aria-label="Hide recording player"
         onClick={() => setPlayerOpen(false)}>
         <X size={20} className="text-muted-foreground" />
       </button>

@@ -1,5 +1,6 @@
 import localFont from "next/font/local"
 import "./globals.css"
+import "./portfolio.css"
 import { AudioProvider, FixedAudioPlayer } from "@/components/AudioPlayer"
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/next"
@@ -27,7 +28,7 @@ export const metadata = {
     template: "%s — Benny Conn",
   },
   description:
-    "Benny Conn builds software and plays jazz trombone in New York City. Now at Ambrook, also building Runbook Aviation and personal AI assistants for touring teams.",
+    "Benny Conn is a software engineer at Ambrook, co-founder of Curation Events, and jazz trombonist in New York City. Explore software, event production, and live music.",
   keywords: [
     "Benny Conn",
     "Software Engineer",
@@ -39,6 +40,10 @@ export const metadata = {
     "React",
     "New York",
     "Jazz Trombonist",
+    "Event Producer",
+    "Creative Direction",
+    "Curation Events",
+    "Community Programming",
     "Music Tech",
     "Founder",
   ],
@@ -49,9 +54,9 @@ export const metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Benny Conn",
-    title: "Benny Conn — Software & Jazz Trombone",
+    title: "Benny Conn — Software, Events & Jazz",
     description:
-      "Benny Conn builds software and plays jazz trombone in New York City. Now at Ambrook, also building Runbook Aviation and personal AI assistants for touring teams.",
+      "Benny Conn is a software engineer at Ambrook, co-founder of Curation Events, and jazz trombonist in New York City. Explore software, event production, and live music.",
     images: [
       {
         url: "/happy.jpg",
@@ -63,9 +68,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Benny Conn — Software & Jazz Trombone",
+    title: "Benny Conn — Software, Events & Jazz",
     description:
-      "Benny Conn builds software and plays jazz trombone in New York City. Now at Ambrook, also building Runbook Aviation and personal AI assistants for touring teams.",
+      "Benny Conn is a software engineer at Ambrook, co-founder of Curation Events, and jazz trombonist in New York City. Explore software, event production, and live music.",
     images: ["/happy.jpg"],
   },
   alternates: {
@@ -110,7 +115,7 @@ const jsonLd = {
     "https://linkedin.com/in/benny-conn",
   ],
   description:
-    "Software engineer at Ambrook and jazz trombonist in New York City. Also building Runbook Aviation.",
+    "Software engineer at Ambrook, co-founder and creative director of Curation Events, and jazz trombonist in New York City. Also building Jetside.",
 }
 
 export default function RootLayout({ children }) {
