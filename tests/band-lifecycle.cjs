@@ -97,6 +97,18 @@ async function scenario(reduced = false) {
   root.querySelector = (s) => elements[s] ?? (elements[s] = new E())
   root.querySelectorAll = () => []
   root.closest = () => variant
+  // Record the letter origins drawn by each frame, including the offstage pause.
+  let actorOrigin = null,
+    drawnLetters = []
+  context.clearRect = () => {
+    drawnLetters = []
+  }
+  context.translate = (x, y) => {
+    actorOrigin = { x, y }
+  }
+  context.fillText = (text) => {
+    if (text.length === 1) drawnLetters.push({ text, ...actorOrigin })
+  }
   class Param {
     constructor(value = 1) {
       this.value = value
@@ -291,7 +303,17 @@ async function scenario(reduced = false) {
   assert.equal(audioContexts.length, 0, "No autoplay context")
   await click(".bc-start")
   await flush()
-  await advance(3400)
+  await advance(1200)
+  if (!reduced) {
+    assert.equal(drawnLetters.length, 9)
+    assert(
+      drawnLetters.every(
+        ({ x }) => x < -100 || x > elements[".bc-stage"].clientWidth + 100,
+      ),
+      "Every letter must leave the visible stage completely before returning",
+    )
+  }
+  await advance(2200)
   assert.equal(root.dataset.bandState, "ready")
   assert.equal(elements[".bc-music"].textContent, "Start the music")
   if (!reduced)

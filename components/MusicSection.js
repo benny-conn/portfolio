@@ -32,13 +32,12 @@ const playlist = [
   },
 ]
 
-export default function MusicSection() {
+export default function MusicSection({ limit = playlist.length }) {
   const {
     audioRef,
     isPlaying,
     currentTrackIndex,
     setPlaylist,
-    setCurrentTrackIndex,
     playTrack,
     setIsPlaying,
   } = useContext(AudioContext)
@@ -58,14 +57,18 @@ export default function MusicSection() {
 
   return (
     <div className="border-t border-border">
-      {playlist.map((track, i) => {
+      {playlist.slice(0, limit).map((track, i) => {
         const isActive = currentTrackIndex === i && isPlaying
         return (
-          <div
-            key={i}
+          <button
+            key={track.src}
+            type="button"
+            aria-label={`${isActive ? "Pause" : "Play"} ${track.name}`}
+            aria-pressed={isActive}
             onClick={() => toggleTrack(i)}
-            className="group flex items-center gap-5 py-4 border-b border-border cursor-pointer hover:bg-secondary/40 transition-colors rounded px-3 -mx-3">
-            <div className="w-4 flex items-center justify-center shrink-0">
+            className="group w-full text-left flex items-center gap-5 py-4 border-b border-border cursor-pointer hover:bg-secondary/40 transition-colors rounded px-3 -mx-3"
+          >
+            <span className="w-4 flex items-center justify-center shrink-0">
               {isActive ? (
                 <Pause size={13} className="text-brand" />
               ) : (
@@ -79,19 +82,20 @@ export default function MusicSection() {
                   />
                 </>
               )}
-            </div>
-            <div>
-              <p
+            </span>
+            <span>
+              <span
                 className={`text-sm font-medium transition-colors ${
                   isActive ? "text-brand" : "group-hover:text-foreground"
-                }`}>
+                }`}
+              >
                 {track.name}
-              </p>
-              <p className="text-xs text-muted-foreground mt-0.5">
+              </span>
+              <span className="block text-xs text-muted-foreground mt-0.5">
                 {track.description}
-              </p>
-            </div>
-          </div>
+              </span>
+            </span>
+          </button>
         )
       })}
     </div>

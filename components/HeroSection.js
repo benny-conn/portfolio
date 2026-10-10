@@ -79,57 +79,54 @@ export default function HeroSection({ children }) {
             Hold &amp; drag to solo.
           </span>
         </div>
-        <p className="bc-intro">
-          I build software, play trombone, and find plenty of reasons to mix the
-          two.
-        </p>
-        <p className="bc-current">
-          Now at{" "}
-          <a
-            href="https://ambrook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ambrook
-          </a>
-          . Also building{" "}
-          <a
-            href="https://runbookaviation.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Runbook Aviation
-          </a>
-          .
-        </p>
-        <div className="bc-bottom">
+        <div className="portfolio-intro">
+          <h2>
+            Software, events,
+            <br />
+            and music.
+          </h2>
           <div>
-            <h2>Things I’m working on</h2>
-            <a
-              className="bc-project"
-              href="https://runbookaviation.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Runbook Aviation
-            </a>
-            <a className="bc-project" href="#work">
-              All projects
-            </a>
-          </div>
-          <div className="bc-service">
-            <h2>For touring teams</h2>
-            <h3>A personal assistant for your tour.</h3>
             <p>
-              I set up AI assistants around your correspondence, Master Tour,
-              and the way your team works.
+              I’m a software engineer and event producer in New York. I also
+              play jazz trombone and lead the Benny Conn Big Band.
             </p>
-            <Link href="/tour-assistants">Explore a one-tour pilot</Link>
+            <p className="bc-current">
+              Now at{" "}
+              <a
+                href="https://ambrook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ambrook
+              </a>
+              . Co-founder of{" "}
+              <a
+                href="https://curation.events"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Curation Events
+              </a>
+              .
+            </p>
           </div>
         </div>
+        <nav className="portfolio-index" aria-label="Explore my work">
+          <a href="#events">
+            <span>01</span> Events &amp; community{" "}
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a href="#software">
+            <span>02</span> Software &amp; products{" "}
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a href="#live-music">
+            <span>03</span> Live music <span aria-hidden="true">↓</span>
+          </a>
+        </nav>
       </section>
       {children}
-      <footer className="bc-footer site-width">
+      <footer className="bc-footer portfolio-width">
         <div className="bc-footer-links">
           <a
             href="https://github.com/benny-conn"

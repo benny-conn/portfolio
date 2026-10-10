@@ -45,7 +45,7 @@ Agents may install dependencies and run local development, build, lint, and test
 - Keep the full trombone cursor and live pitch readout on the homepage only. Other routes use the normal cursor and must not keep the band playing.
 - Preserve touch scrolling outside the stage, keyboard play, visible focus, reduced-motion behavior, explicit mute, and cleanup of audio/timers/listeners on unmount or hidden documents.
 - Benny’s supplied bassline is 48 quarter notes in a 12-bar B-flat form. Preserve its pitches and rhythm unless asked to change them.
-- Current bio: works at Ambrook and is also building Runbook Aviation. Don’t invent product capabilities or claim the tour-assistant pilot is an already proven Master Tour integration.
+- Current bio: works at Ambrook and is also building Jetside. Don’t invent product capabilities or claim the tour-assistant pilot is an already proven Master Tour integration.
 
 ## Verification and scope
 

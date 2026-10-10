@@ -1,8 +1,8 @@
 # Benny Conn
 
-> Software engineer at Ambrook and jazz trombonist. Based in New York City.
+> Software engineer at Ambrook, event producer, and jazz trombonist. Based in New York City.
 
-Benny Conn is a software engineer and founder specializing in backend systems, AI-powered platforms, and full-stack product development. He works at Ambrook and is also building Runbook Aviation. He is also a jazz trombonist.
+Benny Conn is a software engineer and founder specializing in backend systems, AI-powered platforms, and full-stack product development. He works at Ambrook and is also building Jetside. He co-founded Curation Events and is a jazz trombonist and bandleader. His portfolio balances software, events and community programming, and music.
 
 ## About
 
@@ -15,8 +15,8 @@ Benny Conn is a software engineer and founder specializing in backend systems, A
 
 ## Projects
 
-### Runbook Aviation (runbookaviation.com)
-An aviation project Benny is building.
+### Jetside (jetside.app)
+An aircraft maintenance coordination platform Benny is building for business aviation teams.
 
 
 ### Gallery (gallery.so)
@@ -29,11 +29,11 @@ Full-stack platform for gigging musicians — built the entire stack from React 
 Developed multiple Minecraft plugins used by thousands of multiplayer servers globally, including Civilizations (land claiming and politics system) and Bundle (a plugin package manager). Built in Java and Kotlin.
 
 ### Curation Events (curation.events)
-Co-founded and led a full-service experiential event studio delivering large-scale corporate activations for brands including Spotify and Aetna. Served 1,000+ attendees across New York and Los Angeles.
+Co-founder and Creative Director of an independent event studio. Produced a Spotify × Aetna event for 400 guests with a $25k budget, 20 on-site staff, and 10 vendors. Filled a 120-person Williamsburg bar for a ticketed Gig App launch through organic outreach. Started a monthly jazz night at Ambrook with 140 attendees at the first night. Developed concepts and production plans for a series of $250k Chobani events, with approval to source vendors and finalize budgets. Event stories and proposals at bennyconn.com/work/curation-events.
 
 ## Music
 
-Benny is a jazz trombonist based in New York City.
+Benny plays jazz trombone and leads the Benny Conn Big Band, rooted in bebop and swing. The homepage offers recordings, and bennyconn.com/music includes the full recording collection and live performances.
 
 ## Tour assistants
 
