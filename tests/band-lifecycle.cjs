@@ -485,11 +485,93 @@ async function scenario(reduced = false) {
     "Release before decode must cancel pending note",
   )
   box.controller.destroy()
+
+  // "Start the band" hands off to the 3D bandstand; the 2D walk-on is its fallback.
+  vm.runInContext(
+    "var takeStart = true, startRequests = 0;" +
+      "var handoff = createBand(root, { onStartRequest: () => (startRequests++, takeStart) });",
+    box,
+  )
+  await advance(20)
+  const fetchesBeforeHandoff = fetchCount
+  await click(".bc-start")
+  await advance(200)
+  assert.equal(box.startRequests, 1)
+  assert.equal(root.dataset.bandState, "idle", "3D stage owns the start")
+  assert.equal(fetchCount, fetchesBeforeHandoff, "2D band stays quiet")
+  const rects = box.handoff.letterRects()
+  assert.equal(rects.map((r) => r.char).join(""), "bennyconn")
+  assert(rects.every((r) => r.width > 0 && r.height > 0 && r.fontSize > 0))
+  assert(rects[0].top < rects[5].top, "benny sits above conn")
+  assert(rects[0].left < rects[4].left, "letters read left to right")
+  box.handoff.setMuted(true)
+  assert.deepEqual({ ...box.handoff.sound() }, { muted: true, chosen: true })
+  box.takeStart = false
+  await click(".bc-start")
+  await flush()
+  assert.equal(
+    root.dataset.bandState,
+    reduced ? "ready" : "assembling",
+    "2D fallback walks on",
+  )
+  box.handoff.destroy()
+
+  if (!reduced) await stageAudioCheck()
+  async function stageAudioCheck() {
+    vm.runInContext(
+      fs
+        .readFileSync(path.join(__dirname, "../lib/bandstand/audio.js"), "utf8")
+        .replace(/^import .*;?$/gm, "")
+        .replace(/export function/g, "function") +
+        "\nvar stageNotes = [];" +
+        "var stageAudio = createBandAudio({ onStart() { globalThis.stageStarted = true } });" +
+        "stageAudio.onNote = (e) => stageNotes.push(e);",
+      box,
+    )
+    const contexts = audioContexts.length,
+      fetches = fetchCount
+    const started = box.stageAudio.start()
+    await flush()
+    const startTime = await started
+    assert(box.stageStarted, "Stage music quiets the recordings player")
+    assert.equal(audioContexts.length, contexts + 1)
+    assert(fetchCount > fetches, "Stage loads the same instrument samples")
+    await advance(4000)
+    const notes = box.stageNotes,
+      players = new Set(notes.map((e) => e.player))
+    for (const p of [0, 1, 5, 9, 10, 11])
+      assert(players.has(p), `Player ${p} reaches the stage`)
+    assert(notes.every((e) => e.time >= startTime - 1e-6))
+    assert.deepEqual(
+      Array.from(
+        notes.filter((e) => e.role === "contrabass").slice(0, 8),
+        (e) => e.midi,
+      ),
+      [34, 38, 41, 40, 39, 39, 40, 40],
+      "Stage plays Benny's bassline",
+    )
+    const tail = box.stageAudio.cutOff()
+    assert.equal(box.stageAudio.running, false)
+    assert(tail.length > 0, "The cutoff leaves a tail")
+    const heard = notes.length
+    await advance(1000)
+    assert.equal(notes.length, heard, "No score notes after the cutoff")
+    assert.equal(box.stageAudio.playSolo(60), true, "Solo voice plays")
+    box.stageAudio.stopSolo()
+    box.stageAudio.setMuted(true)
+    assert.equal(box.stageAudio.muted, true)
+    box.stageAudio.destroy()
+    assert.equal(audioContexts.at(-1).state, "closed")
+  }
   console.log(
     `${
       reduced ? "Reduced motion" : "Animated"
-    }: entrance, jazz, staggered cutoff, reset, pitch, mute, route cleanup, retry, and canceled gestures passed.`,
+    }: entrance, jazz, staggered cutoff, reset, pitch, mute, route cleanup, retry, canceled gestures, and 3D handoff passed.`,
   )
+  if (!reduced)
+    console.log(
+      "3D stage audio: score, bassline, cutoff tail, solo, mute, and cleanup passed.",
+    )
 }
 
 function scoreCheck() {

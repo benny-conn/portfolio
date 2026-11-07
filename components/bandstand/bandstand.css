@@ -1,0 +1,157 @@
+/* The homepage's 3D bandstand overlay. It sits above the whole site, nav included. */
+.bs-overlay {
+  --bc-yellow: #ffdd00;
+  --bc-muted: #a3a3a3;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #0a0a0a;
+  color: #fafafa;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.5s ease,
+    visibility 0s linear 0.5s;
+}
+.bs-overlay[data-mode="open"] {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease;
+}
+.bs-overlay[data-mode="leaving"] {
+  opacity: 0;
+  visibility: visible;
+}
+.bs-mount,
+.bs-mount > canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.bs-pad {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 0;
+  cursor: grab;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.bs-pad:active {
+  cursor: grabbing;
+}
+.bs-pad:focus-visible {
+  outline: 2px dashed var(--bc-yellow);
+  outline-offset: -6px;
+}
+.bs-top,
+.bs-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  pointer-events: none;
+}
+.bs-top {
+  top: 0;
+  justify-content: space-between;
+  padding-top: max(16px, env(safe-area-inset-top));
+}
+.bs-bar {
+  bottom: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+}
+.bs-top > *,
+.bs-bar > * {
+  pointer-events: auto;
+}
+.bs-overlay .bs-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 221, 0, 0.55);
+  background: rgba(10, 10, 10, 0.72);
+  color: var(--bc-yellow);
+  font:
+    600 14px/1 var(--font-body),
+    system-ui,
+    sans-serif;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+.bs-overlay .bs-button:hover {
+  background: rgba(40, 34, 0, 0.82);
+}
+.bs-overlay .bs-button:focus-visible {
+  outline: 2px solid var(--bc-yellow);
+  outline-offset: 3px;
+}
+.bs-overlay .bs-button:disabled {
+  color: var(--bc-muted);
+  border-color: rgba(163, 163, 163, 0.4);
+  cursor: wait;
+}
+.bs-overlay .bs-quiet {
+  color: #fafafa;
+  border-color: rgba(250, 250, 250, 0.22);
+  font-weight: 500;
+  font-size: 13px;
+}
+.bs-quiet i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bc-muted);
+}
+.bs-quiet i[data-on="true"] {
+  background: var(--bc-yellow);
+}
+.bs-hint {
+  color: rgba(250, 250, 250, 0.72);
+  font-size: 12px;
+  text-shadow: 0 1px 6px #000;
+}
+.bs-pitch {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 4px 9px;
+  border-radius: 8px;
+  background: var(--bc-yellow);
+  color: #0a0a0a;
+  font:
+    800 16px/1 var(--font-display),
+    Georgia,
+    serif;
+  pointer-events: none;
+}
+.bs-overlay [hidden] {
+  display: none !important;
+}
+.bs-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bs-overlay,
+  .bs-overlay[data-mode="open"] {
+    transition-duration: 0.15s;
+  }
+}

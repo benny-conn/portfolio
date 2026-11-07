@@ -1,22 +1,33 @@
 "use client"
 
-import { useContext, useEffect, useRef } from "react"
+import { useCallback, useContext, useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import "./band.css"
 import { AudioContext } from "@/components/AudioPlayer"
+import Bandstand from "@/components/bandstand/Bandstand"
 import { createBand } from "@/lib/band/create-band"
 
 export default function HeroSection({ children }) {
   const rootRef = useRef(null)
   const bandRef = useRef(null)
+  const stageRef = useRef(null)
+  const [raising, setRaising] = useState(false)
   const { audioRef, setIsPlaying, isPlaying } = useContext(AudioContext)
+
+  // The homepage band and the recordings player take turns.
+  const quietRecordings = useCallback(() => {
+    audioRef.current?.pause()
+    setIsPlaying(false)
+  }, [audioRef, setIsPlaying])
 
   useEffect(() => {
     const band = createBand(rootRef.current, {
-      onAudioStart() {
-        // The homepage band and the recordings player take turns.
-        audioRef.current?.pause()
-        setIsPlaying(false)
+      onAudioStart: quietRecordings,
+      // "Start the band" opens the 3D bandstand; the 2D walk-on is the fallback.
+      onStartRequest() {
+        const opened = stageRef.current?.open() ?? false
+        if (opened) band.pause()
+        return opened
       },
     })
     bandRef.current = band
@@ -24,11 +35,16 @@ export default function HeroSection({ children }) {
       band.destroy()
       bandRef.current = null
     }
-  }, [audioRef, setIsPlaying])
+  }, [quietRecordings])
 
   useEffect(() => {
-    if (isPlaying) bandRef.current?.pause()
+    if (!isPlaying) return
+    bandRef.current?.pause()
+    stageRef.current?.stopMusic()
   }, [isPlaying])
+
+  const warmStage = () => stageRef.current?.preload()
+  const band = () => bandRef.current
 
   return (
     <main ref={rootRef} className="bc-band" id="main-content">
@@ -61,8 +77,15 @@ export default function HeroSection({ children }) {
           pitch. Release to stop your note.
         </p>
         <div className="bc-playbar">
-          <button type="button" className="bc-start">
-            Start the band
+          <button
+            type="button"
+            className="bc-start"
+            aria-busy={raising}
+            onPointerEnter={warmStage}
+            onTouchStart={warmStage}
+            onFocus={warmStage}
+          >
+            {raising ? "Raising the curtain…" : "Start the band"}
           </button>
           <button
             type="button"
@@ -179,6 +202,23 @@ export default function HeroSection({ children }) {
         </span>
       </div>
       <div className="bc-announcement bc-sr" role="status" aria-live="polite" />
+      <Bandstand
+        ref={stageRef}
+        getLetters={() => band()?.letterRects() ?? []}
+        getMuted={() => {
+          const sound = band()?.sound()
+          return Boolean(sound?.chosen && sound.muted)
+        }}
+        onMutedChange={(muted) => band()?.setMuted(muted)}
+        onAudioStart={quietRecordings}
+        onLoading={setRaising}
+        onFallback={() => band()?.gather()}
+        onClose={() =>
+          rootRef.current
+            ?.querySelector(".bc-start")
+            ?.focus({ preventScroll: true })
+        }
+      />
     </main>
   )
 }
