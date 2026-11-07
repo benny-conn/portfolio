@@ -7,21 +7,24 @@ This is Benny Conn’s personal portfolio: software projects, jazz recordings, a
 - Node.js 24 LTS (`.nvmrc` and `package.json` engines). The engines field also selects Node 24 for Vercel builds.
 - Next.js 16 App Router, React 19, JavaScript/JSX (no TypeScript migration needed).
 - Tailwind CSS 4, Radix/shadcn components, Lucide icons, Vercel Analytics.
+- three.js for the homepage’s 3D bandstand, loaded only on intent or a good idle connection.
 - Use npm and commit `package-lock.json` when dependencies change.
 - `npm ci` installs dependencies.
 - `npm run dev` starts the local Next.js preview (default port 3000).
 - `npm run build` validates the production build; `npm start` serves it.
 - `npm run lint` runs ESLint.
-- `npm test` checks the band score and interaction/audio lifecycle with Node.
+- `npm test` checks the band score, the 2D band’s interaction/audio lifecycle, the 3D handoff, and the 3D stage’s audio with Node.
 
 Agents may install dependencies and run local development, build, lint, and test commands as needed. Check for an existing preview before starting another. Leave a useful preview running for the user. Publishing/deployment is separate from local implementation; do it when requested.
 
 ## Where things live
 
 - `app/page.js`: homepage project listing, rendered inside the musical homepage.
-- `components/HeroSection.js`: homepage markup and React lifecycle for the band.
+- `components/HeroSection.js`: homepage markup and React lifecycle for the band and the 3D bandstand.
 - `components/band.css`: scoped homepage/band styling.
-- `lib/band/create-band.js`: canvas drawing, character choreography, input, and Web Audio. `createBand` returns `pause()` and `destroy()`.
+- `lib/band/create-band.js`: the idle hero and 2D band: canvas drawing, character choreography, input, and Web Audio. `createBand` takes `onStartRequest` (lets the 3D stage take “Start the band”) and returns `pause()`, `gather()` (2D walk-on), `letterRects()`, `sound()`, `setMuted()`, and `destroy()`.
+- `components/bandstand/Bandstand.js`, `components/bandstand/bandstand.css`: the full-screen 3D overlay (portaled above the nav), its controls, focus, and scroll lock.
+- `lib/bandstand/create-bandstand.js`: three.js scene, camera moves, curtain, choreography, and solo input. `lib/bandstand/models.js` builds the clay players, instruments, and theater from primitives. `lib/bandstand/audio.js` is the stage’s Web Audio engine.
 - `lib/band/score.js`: concert B-flat jazz blues arrangement and Benny’s walking bassline.
 - `lib/band/samples.js`: lazy-loaded instrument sample manifest.
 - `public/audio/band/`: sampled instruments and attribution. Keep the sound credits and asset license information.
@@ -41,14 +44,15 @@ Agents may install dependencies and run local development, build, lint, and test
 - Keep the yellow (`#ffdd00`) and black (`#0a0a0a`) identity.
 - Fraunces is the soft, expressive display face; DM Sans is the body/control face.
 - The homepage name is lowercase `benny` over `conn`. Its nine letters each play a horn; piano, bass, and drums sit together to their left.
-- The band is opt-in. “Start the band” fetches instruments; a separate “Start the music” begins the jazz blues. Stop has a staggered musical tail. Reset returns the plain letters with the established step-aside/nudge choreography.
-- Keep the full trombone cursor and live pitch readout on the homepage only. Other routes use the normal cursor and must not keep the band playing.
+- The band is opt-in. “Start the band” opens the 3D bandstand: the hero letters lift off the page in place, marquee bulbs light around a golden velvet curtain, the curtain opens, the letters land on the band fronts, and twelve clay players walk on and sit. A separate “Start the music” begins the jazz blues. Stop has a staggered musical tail. “Close the curtain” (or Escape) reverses it and lands the letters back on the page.
+- Without WebGL2, or if the 3D stage fails to load, “Start the band” falls back to the 2D walk-on. In 2D, Reset returns the plain letters with the established step-aside/nudge choreography.
+- Keep the full trombone cursor on the idle homepage. In 3D, hold and drag (or Space/Enter with arrows) makes the glasses-wearing trombonist stand in the spotlight with a live pitch readout. Other routes use the normal cursor and must not keep the band playing.
 - Preserve touch scrolling outside the stage, keyboard play, visible focus, reduced-motion behavior, explicit mute, and cleanup of audio/timers/listeners on unmount or hidden documents.
 - Benny’s supplied bassline is 48 quarter notes in a 12-bar B-flat form. Preserve its pitches and rhythm unless asked to change them.
 - Current bio: works at Ambrook and is also building Jetside. Don’t invent product capabilities or claim the tour-assistant pilot is an already proven Master Tour integration.
 
 ## Verification and scope
 
-Follow existing `@/` import aliases and JavaScript conventions. Keep changes focused; preserve unrelated work. Validate changes with the relevant commands above and inspect desktop/mobile UI for visual work. For the band, check entrance, music, solo/pitch, mute, staggered stop, reset, restart, route navigation, and reduced motion. The Node harness does not replace visual browser checks or listening.
+Follow existing `@/` import aliases and JavaScript conventions. Keep changes focused; preserve unrelated work. Validate changes with the relevant commands above and inspect desktop/mobile UI for visual work. For the band, check entrance, music, solo/pitch, mute, staggered stop, reset, restart, route navigation, and reduced motion. For the 3D stage, also check the T=0 handoff (3D letters exactly on the page letters), the close back to the page, focus, and phone framing; in development, `window.__bandstand.freeze(seconds)` pins the choreography clock (`freeze(null)` resumes). The Node harness does not replace visual browser checks or listening.
 
 No credentials belong in client code or committed files. External content/API failures should degrade gracefully. Do not send contact forms or modify external services merely to test the site.
